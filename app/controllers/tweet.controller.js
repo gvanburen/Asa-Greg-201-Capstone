@@ -3,9 +3,7 @@ var client = require('../../config/twitter.config.js');
 module.exports.getUserTweets = function(req, res) {
 
     var params = {
-        screen_name: 'StephenAtHome',
-        count: 20,
-        include_rts: 1
+        screen_name: req.params.name
     };
 
     client.get('statuses/user_timeline', params, function(error, tweets, response) {
