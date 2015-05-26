@@ -1,32 +1,57 @@
-<nav>
-    <span class="icon">
-        <img src="../../assets/images/bird_chart.jpeg" height="90px" alt="Reading Bird">
-        <h1>Twitter Analysis</h1>
-    </span>
-    <ul>
-        <li><a ng-click="scrollTo('intro')">About</a></li>
-        <li><a ng-click="scrollTo('analyze')">Analyze</a></li>
-    </ul>
+<nav id="nav">
+    <div class="nav-wrapper">
+        <a class="brand-logo left">
+            Twitter Analyzer
+        </a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="sass.html"><i class="mdi-action-search"></i></a></li>
+            <li><a ng-click="scrollTo('intro')">About</a></li>
+            <li><a ng-click="scrollTo('analyze')">Analyze</a></li>
+        </ul>
+    </div>
 </nav>
 <section class="title">
-    <div>
-        <a ng-click="scrollTo('intro')">Learn More</a>
+    <div class="large-img">
+        <a class="waves-effect waves-light btn-large" ng-click="scrollTo('intro')">Learn More</a>
     </div>
 </section>
-<section id="intro" class="intro">
-    <div class="feature-container">
-        <div class="feature">
-            <div class="sentiment-icon"></div>
+<section class="features">
+    <div class="row">
+        <div id="intro" class="col s4 offset-s2">
+            <div class="sentiment-icon icon"></div>
             <h2>Sentiment Analysis</h2>
             <p>Natural Language Processing technology to better understand the sentiment of your tweets and others.</p>
         </div>
-        <div class="feature">
-            <div class="feature-icon"></div>
+        <div class="col s4 offset-s1">
+            <div class="feature-icon icon"></div>
             <h2>Some other Analysis</h2>
             <p>Explanation about feature. Some text relevant to this feature. Maybe about data visualization.</p>
         </div>
     </div>
 </section>
+<section id="analyze" class="analyze">
+    <div class="container">
+        <h1 class="offset-s3">Enter a twitter handle to get started.</h1>
+        <form class="col s6" ng-submit="loadTweets()">
+            <div class="row">
+                <span class="left">
+                        <h1 ng-show="!loadingTweets">@</h1>
+                        <div ng-show="loadingTweets" class="loader"></div>
+                    </span>
+                <div class="input-field col s4  offset-s4">
+                    <input id="handle" type="text" ng-model="userInput.text" placeholder="Twitter handle">
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Analyze
+                    <i class="mdi-content-send right"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+    </div>
+</section>
+<footer>
+</footer>
+<!-- 
 <section id="analyze" class="analyze">
     <div class="wrapper">
         <h1>Enter a twitter handle to get started.</h1>
@@ -40,5 +65,5 @@
         </form>
     </div>
 </section>
-<footer>
-</footer>
+
+-->
