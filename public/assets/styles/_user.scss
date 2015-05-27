@@ -1,10 +1,13 @@
 nav#nav {
     background: #EF8555;
+    li {
+        cursor: pointer;
+    }
     a.brand-logo {
         color: #65A9DA;
         font-weight: bold;
-        margin-left: 5em;
         text-shadow: 4px 4px 0px #fff;
+        cursor: pointer;
     }
     ul {
         margin-right: 4em;
@@ -14,7 +17,8 @@ nav#nav {
 section {
     height: 34em;
     .btn-large {
-        margin: 10em 50%;
+        width: 12em;
+        margin-top: 15em;
     }
     div.large-img {
         background-image: url('../images/Twitter-flat-analytics.jpg');
@@ -25,17 +29,15 @@ section {
 }
 
 section.features {
-  padding-top: 2em;
-  div.icon {
-    height: 16em;
-  }
-  div.sentiment-icon {
-    background-image: url('../images/sentiment.png');
-    background-repeat: no-repeat;
-  }
+    padding-top: 2em;
+    div.icon {
+        height: 16em;
+    }
+    div.sentiment-icon {
+        background-image: url('../images/sentiment.png');
+        background-repeat: no-repeat;
+    }
 }
-
-
 
 section#analyze {
     background-color: #65A9DA;
@@ -47,8 +49,11 @@ section#analyze {
     }
     span.left {
         position: relative;
-        top: -1em;
+        top: -2em;
         left: 15em;
+        .preloader-wrapper {
+            margin-top: 3em;
+        }
     }
     button {
         margin: 2em 0 0 2em;

@@ -1,18 +1,21 @@
 @charset "UTF-8";
 nav#nav {
   background: #EF8555; }
+  nav#nav li {
+    cursor: pointer; }
   nav#nav a.brand-logo {
     color: #65A9DA;
     font-weight: bold;
-    margin-left: 5em;
-    text-shadow: 4px 4px 0px #fff; }
+    text-shadow: 4px 4px 0px #fff;
+    cursor: pointer; }
   nav#nav ul {
     margin-right: 4em; }
 
 section {
   height: 34em; }
   section .btn-large {
-    margin: 10em 50%; }
+    width: 12em;
+    margin-top: 15em; }
   section div.large-img {
     background-image: url("../images/Twitter-flat-analytics.jpg");
     height: 100%;
@@ -36,8 +39,10 @@ section#analyze {
     font-size: 3rem; }
   section#analyze span.left {
     position: relative;
-    top: -1em;
+    top: -2em;
     left: 15em; }
+    section#analyze span.left .preloader-wrapper {
+      margin-top: 3em; }
   section#analyze button {
     margin: 2em 0 0 2em; }
 
