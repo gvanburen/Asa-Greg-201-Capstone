@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('textAnalysis')
-    .controller('homeCtrl', ['$scope', '$http', '$anchorScroll', '$routeParams', '$location', 'twitterService',
-        function($scope, $http, $anchorScroll, $route, $location, twitterService) {
+    .controller('homeCtrl', ['$scope', '$http', '$anchorScroll', '$location',
+        function($scope, $http, $anchorScroll, $route, $location) {
 
             $scope.loadingTweets = false;
 
