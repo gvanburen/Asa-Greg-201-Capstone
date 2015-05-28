@@ -31,7 +31,7 @@
 <section id="analyze" class="analyze">
     <div class="container">
         <h1 class="offset-s3">Enter a twitter handle to get started.</h1>
-        <form class="col s6" ng-submit="loadTweets()">
+        <form class="col s6" name="submitHandle" ng-submit="loadTweets()">
             <div class="row">
                 <span class="left">
                         <h1 ng-show="!loadingTweets">@</h1>
@@ -48,9 +48,9 @@
                 </div>
                     </span>
                 <div class="input-field col s5  offset-s3">
-                    <input id="handle" type="text" ng-model="userInput.text" placeholder="Twitter handle">
+                    <input id="handle" type="text" name="userInput" ng-model="userInput.text" placeholder="Twitter handle" required>
                 </div>
-                <button class="btn waves-effect waves-light" type="submit" name="action">Analyze
+                <button class="btn waves-effect waves-light" type="submit">Analyze
                     <i class="mdi-content-send right"></i>
                 </button>
             </div>

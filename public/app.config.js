@@ -7,7 +7,7 @@ angular.module('textAnalysis', ['ngRoute'])
                 templateUrl: './components/home/home.view.html',
                 controller: 'homeCtrl'
             })
-            .when('/tweets', {
+            .when('/tweets/:handle', {
                 templateUrl: './components/tweets/tweets.view.html', //does not exist yet
                 controller: 'tweetCtrl' //does not exist yet
             })

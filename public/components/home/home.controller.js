@@ -14,12 +14,14 @@ angular.module('textAnalysis')
             $scope.userInput = {};
 
             $scope.loadTweets = function() {
-                $scope.loadingTweets = true;
-                twitterService.loadTweets($scope.userInput.text)
-                    .then(function(data) {
-                        $scope.loadingTweets = false;
-                        $location.path('/tweets');
-                    });
+                if ($scope.submitHandle.userInput.$valid) {
+                    $scope.loadingTweets = true;
+                    twitterService.loadTweets($scope.userInput.text)
+                        .then(function(data) {
+                            $scope.loadingTweets = false;
+                            $location.path('/tweets');
+                        });
+                }
             };
         }
     ]);
