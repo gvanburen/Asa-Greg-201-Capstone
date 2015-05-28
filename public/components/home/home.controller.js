@@ -2,7 +2,7 @@
 
 angular.module('textAnalysis')
     .controller('homeCtrl', ['$scope', '$http', '$anchorScroll', '$location',
-        function($scope, $http, $anchorScroll, $route, $location) {
+        function($scope, $http, $anchorScroll, $location) {
 
             $scope.loadingTweets = false;
 
@@ -17,11 +17,6 @@ angular.module('textAnalysis')
                 if ($scope.submitHandle.userInput.$valid) {
                     $scope.loadingTweets = true;
                     $location.path('/tweets/' + $scope.userInput.text);
-                    //twitterService.loadTweets($scope.userInput.text)
-                    //    .then(function(data) {
-                    //        $scope.loadingTweets = false;
-                    //        $location.path('/tweets');
-                    //    });
                 }
             };
         }
