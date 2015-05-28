@@ -1,5 +1,5 @@
-var gulp = require('gulp'),
-    plumber = require('gulp-plumber');
+var gulp = require('gulp');
+var plumber = require('gulp-plumber');
 var autoprefixer = require('gulp-autoprefixer');
 var concat = require('gulp-concat');
 var imagemin = require('gulp-imagemin');

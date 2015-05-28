@@ -14,7 +14,6 @@ angular.module('textAnalysis')
                         .success(function(data) {
                             deferred.resolve(data);
                             userTimeline = data;
-                            console.log(userTimeline);
                         }).error(function(e) {
                             console.log('Error: ', e);
                             deferred.reject(e);

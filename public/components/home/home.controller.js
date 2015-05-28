@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('textAnalysis')
-    .controller('homeCtrl', ['$scope', '$http', '$anchorScroll', '$location', 'twitterService',
-        function($scope, $http, $anchorScroll, $location, twitterService) {
+    .controller('homeCtrl', ['$scope', '$http', '$anchorScroll', '$routeParams', '$location', 'twitterService',
+        function($scope, $http, $anchorScroll, $route, $location, twitterService) {
 
             $scope.loadingTweets = false;
 
@@ -16,11 +16,12 @@ angular.module('textAnalysis')
             $scope.loadTweets = function() {
                 if ($scope.submitHandle.userInput.$valid) {
                     $scope.loadingTweets = true;
-                    twitterService.loadTweets($scope.userInput.text)
-                        .then(function(data) {
-                            $scope.loadingTweets = false;
-                            $location.path('/tweets');
-                        });
+                    $location.path('/tweets/' + $scope.userInput.text);
+                    //twitterService.loadTweets($scope.userInput.text)
+                    //    .then(function(data) {
+                    //        $scope.loadingTweets = false;
+                    //        $location.path('/tweets');
+                    //    });
                 }
             };
         }
