@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="textAnalysis">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+    <link rel="stylesheet" href="./dist/styles/materialize.css">
+    <title>Tweet Analyzer</title>
+</head>
+
+<body>
+    <ng-view></ng-view>
+</body>
+<script src="./bower_components/angular/angular.min.js"></script>
+<script src="./bower_components/angular-route/angular-route.min.js"></script>
+<script src="./app.config.js"></script>
+<script src="./services/twitter.service.js"></script>
+<script src="./components/home/home.controller.js"></script>
+</html>

@@ -1,0 +1,62 @@
+<nav id="nav">
+    <div class="nav-wrapper">
+        <a class="brand-logo left">
+            Twitter Analyzer
+        </a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a ng-click="scrollTo('intro')">About</a></li>
+            <li><a ng-click="scrollTo('analyze')">Analyze</a></li>
+        </ul>
+    </div>
+</nav>
+<section class="title">
+    <div class="large-img center-align">
+        <a class="waves-effect waves-light btn-large" ng-click="scrollTo('intro')">Learn More</a>
+    </div>
+</section>
+<section class="features">
+    <div class="row">
+        <div id="intro" class="col s4 offset-s2">
+            <div class="sentiment-icon icon"></div>
+            <h2>Sentiment Analysis</h2>
+            <p>Natural Language Processing technology to better understand the sentiment of any twitter account.</p>
+        </div>
+        <div class="col s4 offset-s1">
+            <div class="feature-icon icon"></div>
+            <h2>Some other Analysis</h2>
+            <p>Explanation about feature. Some text relevant to this feature. Maybe about data visualization.</p>
+        </div>
+    </div>
+</section>
+<section id="analyze" class="analyze">
+    <div class="container">
+        <h1 class="offset-s3">Enter a twitter handle to get started.</h1>
+        <form class="col s6" name="submitHandle" ng-submit="loadTweets()">
+            <div class="row">
+                <span class="left">
+                        <h1 ng-show="!loadingTweets">@</h1>
+                        <div ng-show="loadingTweets" class="preloader-wrapper active">
+                          <div class="spinner-layer spinner-green-only">
+                             <div class="circle-clipper left">
+                             <div class="circle"></div>
+                            </div><div class="gap-patch">
+                            <div class="circle"></div>
+                            </div><div class="circle-clipper right">
+                            <div class="circle"></div>
+                         </div>
+                    </div>
+                </div>
+                    </span>
+                <div class="input-field col s5  offset-s3">
+                    <input id="handle" type="text" name="userInput" ng-model="userInput.text" placeholder="Twitter handle" required>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit">Analyze
+                    <i class="mdi-content-send right"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+    </div>
+</section>
+<footer>
+</footer>
