@@ -8,15 +8,8 @@ angular.module('textAnalysis', ['ngRoute'])
                 controller: 'homeCtrl'
             })
             .when('/tweets/:handle', {
-                templateUrl: './components/tweets/tweets.view.html', //does not exist yet
-                controller: 'tweetCtrl',
-                resolve: {
-                    tweetData: ['$route', 'twitterService', 
-                        function($route, twitterService) {
-                        var handle = $route.current.params.handle;
-                        return twitterService.loadTweets(handle);
-                    }]
-                }
+                templateUrl: './components/tweets/tweets.view.html', 
+                controller: 'tweetCtrl'
             })
             .otherwise({
                 redirectTo: '/'

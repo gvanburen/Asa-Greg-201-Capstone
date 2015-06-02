@@ -1,19 +1,19 @@
 'use strict';
 
 angular.module('textAnalysis')
-    .factory('twitterService', ['$q', '$location', '$http',
-        function($q, $location, $http) {
+    .factory('twitterService', ['$q', '$http',
+        function($q, $http) {
 
-            var userTimeline;
+            var twitterObj = {
 
-            return {
+                userTimeline: [],
 
                 loadTweets: function(userInput) {
                     var deferred = $q.defer();
                     $http.get('/api/' + userInput)
                         .success(function(data) {
                             deferred.resolve(data);
-                            userTimeline = data;
+                            twitterObj.userTimeline = data;
                         }).error(function(e) {
                             console.log('Error: ', e);
                             deferred.reject(e);
@@ -21,5 +21,6 @@ angular.module('textAnalysis')
                     return deferred.promise;
                 }
             };
+            return twitterObj;
         }
     ]);
