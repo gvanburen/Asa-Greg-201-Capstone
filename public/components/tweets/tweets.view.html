@@ -1,0 +1,8 @@
+
+<h4>{{sentimentData}}</h4>
+
+<ul>
+  <li ng-repeat="tweet in tweets">{{tweet.text}}
+    <i ng-click="getSentiment(tweet.text)">X</i>
+    </li>
+</ul>

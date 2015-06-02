@@ -1,5 +1,8 @@
 var client = require('../../config/twitter.config.js');
 
+//pass screen_name to the twitter api to load tweets from matching account
+//using the statuses/user_timeline endpoint.
+
 module.exports.getUserTweets = function(req, res) {
 
     var params = {
