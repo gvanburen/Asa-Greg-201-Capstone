@@ -1,11 +1,9 @@
 'use strict';
 
 angular.module('textAnalysis')
-    .controller('homeCtrl', ['$rootScope', '$scope', '$http', '$anchorScroll', '$location',
-        function($rootScope, $scope, $http, $anchorScroll, $location) {
-
-            $scope.loadingTweets = false;
-
+    .controller('homeCtrl', ['$scope', '$http', '$anchorScroll', '$location',
+        function($scope, $http, $anchorScroll, $location) {
+            
             $scope.scrollTo = function(id) {
                 $location.hash(id);
                 $anchorScroll();
@@ -15,9 +13,7 @@ angular.module('textAnalysis')
 
             $scope.loadTweets = function() {
                 if ($scope.submitHandle.userInput.$valid) {
-                    $scope.loadingTweets = true;
                     $location.path('/tweets/' + $scope.userInput.text);
-                    $rootScope.userInput = $scope.userInput;
                 }
             };
         }
