@@ -1,16 +1,11 @@
 'use strict';
 
 angular.module('textAnalysis')
-<<<<<<< HEAD
-    .controller('tweetCtrl', ['$scope', 'twitterService', '$routeParams',
-        function($scope, twitterService, $routeParams) {
-=======
-	.controller('tweetCtrl', ['$routeParams','$scope', 'twitterService', 
-		function($routeParams, $scope, twitterService) {
-			//sets the twitter handle display to be equal to the url handle
+    .controller('tweetCtrl', ['$routeParams', '$scope', 'twitterService',
+        function($routeParams, $scope, twitterService) {
+            //sets the twitter handle display to be equal to the url handle
 
             $scope.twitterHandle = $routeParams.handle;
->>>>>>> upstream/master
 
             //show loading animation until data from twitter is populated
 
@@ -31,16 +26,18 @@ angular.module('textAnalysis')
 
             twitterService.loadTweets($routeParams.handle)
                 .then(function(data) {
-                    
+
                     //store return data in Scope.tweets
                     $scope.tweets = data;
 
                     //turn off loading animation
                     $scope.loadingTweets = false;
                 });
+
+            //format the time as Month, Day, Year
+
+            $scope.correctTime = function(string) {
+                return new Date(Date.parse(string));
+            };
         }
-<<<<<<< HEAD
     ]);
-=======
-	]);
->>>>>>> upstream/master

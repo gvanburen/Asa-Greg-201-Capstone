@@ -1,13 +1,4 @@
-<<<<<<< HEAD
 
-<h4>{{sentimentData}}</h4>
-
-<ul>
-  <li ng-repeat="tweet in tweets">{{tweet.text}}
-    <i ng-click="getSentiment(tweet.text)">X</i>
-    </li>
-</ul>
-=======
 <nav id="nav">
     <div class="nav-wrapper">
         <a class="brand-logo left">
@@ -36,7 +27,7 @@
                 <ul class="collection">
                     <li class="collection-item avatar" ng-repeat="tweet in tweets" ng-click="getSentiment(tweet.text)">
                         <img src="../assets/images/bird_chart.jpeg" alt="" class="circle">
-                        <span class="title">{{ tweet.created_at }}</span>
+                        <span class="title right">{{ correctTime(tweet.created_at) | date}}</span>
                         <p>{{ tweet.text }}</p>
                     </li>
                 </ul>
@@ -44,4 +35,5 @@
         </div>
     </div>
 </div>
->>>>>>> upstream/master
+<script src="./assets/js/d3.layout.cloud.js"></script>
+<script src="./components/tweets/wordCloud.js"></script>
