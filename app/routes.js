@@ -9,7 +9,10 @@ module.exports = function(app) {
     app.get('/api/:name', controller.getUserTweets);
     app.get('/api/tweets/:text', aylienController.getSentiment);
 
+
     app.get('*', function(req, res) {
         res.sendFile('/public/index.html');
     });
 };
+
+

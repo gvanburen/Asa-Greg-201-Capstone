@@ -10,8 +10,8 @@ angular.module('textAnalysis')
 
                 sentimentData: [],
 
-                //load tweets from usertimeline endpoint and
-                //store response in userTimeline array.
+                /* load tweets from usertimeline endpoint and
+                store response in userTimeline array. */
 
                 loadTweets: function(userInput) {
                     var deferred = $q.defer();
@@ -26,8 +26,8 @@ angular.module('textAnalysis')
                     return deferred.promise;
                 },
 
-                //encode tweets to avoid routing to embedded urls
-                //before submitting text of tweet to aylien endpoint
+                /* encode tweets to avoid routing to embedded urls
+                before submitting text of tweet to aylien endpoint */
 
                 getSentiment: function(text) {
                     var encodedText = encodeURIComponent(text);
@@ -36,7 +36,7 @@ angular.module('textAnalysis')
                     $http.get('/api/tweets/' + encodedText)
                         .success(function(data) {
                             deferred.resolve(data);
-                            twitterObj.sentimentData.push(data);
+                                console.log(data);
                         }).error(function(e) {
                             console.log('Error ', e);
                             deferred.reject(e);
