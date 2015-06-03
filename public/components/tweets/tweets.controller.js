@@ -1,24 +1,37 @@
 'use strict';
 
 angular.module('textAnalysis')
-	.controller('tweetCtrl', ['$routeParams','$scope', '$http', 'twitterService', 
-		function($routeParams, $scope, $http, twitterService) {
-			$scope.loadingTweets = true;
+	.controller('tweetCtrl', ['$routeParams','$scope', 'twitterService', 
+		function($routeParams, $scope, twitterService) {
+			//sets the twitter handle display to be equal to the url handle
 
-			$scope.twitterHandle = $routeParams.handle;
-			
-			$scope.tweets = ['first', 'second', 'third', 'fourth'];
+            $scope.twitterHandle = $routeParams.handle;
 
-			/*need to troubleshoot authorization issues
-			or use the node SDK*/ 
-			// $scope.analyze = function(text){
-			// 	// application_id: "3b3a6ee8",
-			// 	// application_key: "c20b9d30b75765b73f3012dcd6fca5e2",
-			// 	var url = "http://api.aylien.com/api/v1/sentiment?text=" + text;
-			// 	$http({
-			// 		method: "GET",
-			// 		url: url
-			// 	});
-			// };
-		}
+            //show loading animation until data from twitter is populated
+
+            $scope.loadingTweets = true;
+
+            //get sentiment data about text via ng-click, 
+            //sending text to the aylien endpoint
+
+            $scope.getSentiment = twitterService.getSentiment;
+
+            //display sentiment data after returned to an object 
+            //in the twitterService
+
+            $scope.sentimentData = twitterService.sentimentData;
+
+            //load tweets after passing the desired screen_name
+            //to the twitterService and then to the twitter endpoint.
+
+            twitterService.loadTweets($routeParams.handle)
+                .then(function(data) {
+                    
+                    //store return data in Scope.tweets
+                    $scope.tweets = data;
+
+                    //turn off loading animation
+                    $scope.loadingTweets = false;
+                });
+        }
 	]);
