@@ -8,12 +8,10 @@ var join = Promise.join;
 var sentiment = function(req, res) {
     aylien.sentiment({
         'text': req.params.text
-    }, function(error, response) {
-        //res.json(response);
-        console.log(response);
-        if (error === null) {
-            console.log(error);
-        }
+    }).then(function(data) {
+        console.log(data);
+    }).error(function(e) {
+        console.log('Error: ', e);
     });
 };
 
@@ -22,12 +20,10 @@ var sentiment = function(req, res) {
 var getHashtags = function(req, res) {
     aylien.hashtags({
         'text': req.params.text
-    }, function(error, response) {
-        //res.json(response);
-        console.log(response);
-        if (error === null) {
-            console.log(error);
-        }
+    }).then(function(data) {
+        console.log(data);
+    }).error(function(e) {
+        console.log('Error: ', e);
     });
 };
 
@@ -36,12 +32,10 @@ var getHashtags = function(req, res) {
 var getEntities = function(req, res) {
     aylien.entities({
         'text': req.params.text
-    }, function(error, response) {
-        //res.json(response);
-        console.log(response);
-        if (error === null) {
-            console.log(error);
-        }
+    }).then(function(data) {
+        console.log(data);
+    }).error(function(e) {
+        console.log('Error: ', e);
     });
 };
 
@@ -50,32 +44,29 @@ var getEntities = function(req, res) {
 var getConcepts = function(req, res) {
     aylien.concepts({
         'text': req.params.text
-    }, function(error, response) {
-        //res.json(response);
-        console.log(response);
-        if (error === null) {
-            console.log(error);
-        }
+    }).then(function(data) {
+        console.log(data);
+    }).error(function(e) {
+        console.log('Error: ', e);
     });
 };
+
 
 //classifies content according to NewsCode standard
 
 var classify = function(req, res) {
     aylien.classify({
         'text': req.params.text
-    }, function(error, response) {
-        //res.json(response);
-        console.log(response);
-        if (error === null) {
-            console.log(error);
-        }
+    }).then(function(data) {
+        console.log(data);
+    }).error(function(e) {
+        console.log('Error: ', e);
     });
 };
 
 module.exports.getSentiment = function(req, res) {
     join(sentiment(req), getHashtags(req), getEntities(req), getConcepts(req), classify(req),
         function(sentiment, hashtags, entities, concepts, classes) {
-            console.log( sentiment + hashtags + concepts);
+            console.log(sentiment + hashtags + concepts);
         });
 };
