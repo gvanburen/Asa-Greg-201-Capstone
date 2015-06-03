@@ -1,4 +1,5 @@
 var aylien = require('../../config/aylien.config.js');
+<<<<<<< HEAD
 var Promise = require('bluebird');
 
 var join = Promise.join;
@@ -76,3 +77,18 @@ module.exports.getSentiment = function(req, res) {
             console.log(sentiment);
         });
 };
+=======
+
+//pass tweet data for analysis to the aylien.sentiment endpoint
+
+module.exports.getSentiment = function(req, res) {
+    aylien.sentiment({
+        'text': req.params.text
+    }, function(error, response) {
+        res.json(response);
+        if (error === null) {
+            console.log(error);
+        }
+    });
+};
+>>>>>>> upstream/master
