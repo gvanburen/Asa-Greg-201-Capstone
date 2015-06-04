@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('textAnalysis')
-	.controller('tweetCtrl', ['$routeParams','$scope', 'twitterService', 
-		function($routeParams, $scope, twitterService) {
+	.controller('tweetCtrl', ['$routeParams','$scope','$log','twitterService', 
+		function($routeParams, $scope, $log, twitterService) {
 			//sets the twitter handle display to be equal to the url handle
 
             $scope.twitterHandle = $routeParams.handle;
@@ -26,7 +26,7 @@ angular.module('textAnalysis')
 
             twitterService.loadTweets($routeParams.handle)
                 .then(function(data) {
-                    console.log(data);
+                    $log.log(data);
                     //store return data in Scope.tweets
                     $scope.tweets = data;
 
