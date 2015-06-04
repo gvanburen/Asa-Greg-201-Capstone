@@ -8,8 +8,12 @@ angular.module('textAnalysis', ['ngRoute'])
                 controller: 'homeCtrl'
             })
             .when('/tweets/:handle', {
-                templateUrl: './components/tweets/tweets.view.html', 
+                templateUrl: './components/tweets/tweets.view.html',
                 controller: 'tweetCtrl'
+            })
+            .when('/results/:handle/', {
+                templateUrl: './components/results/results.view.html',
+                controller: 'resultsCtrl'
             })
             .otherwise({
                 redirectTo: '/'

@@ -7,7 +7,11 @@ var aylienController = require('./controllers/aylien.controller.js');
 module.exports = function(app) {
 
     app.get('/api/:name', controller.getUserTweets);
-    app.get('/api/tweets/:text', aylienController.getSentiment);
+    app.get('/api/tweets/sentiment/:text', aylienController.getSentiment);
+    app.get('/api/tweets/hashtags/:text', aylienController.getHashtags);
+    app.get('/api/tweets/entities/:text', aylienController.getEntities);
+    app.get('/api/tweets/classify/:text', aylienController.getClasses);
+    app.get('/api/tweets/concepts/:text', aylienController.getConcepts);
 
     app.get('*', function(req, res) {
         res.sendFile('/public/index.html');

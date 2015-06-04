@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('textAnalysis')
-    .controller('tweetCtrl', ['$routeParams', '$scope', 'twitterService',
-        function($routeParams, $scope, twitterService) {
+    .controller('tweetCtrl', ['$routeParams', '$scope', '$location', 'twitterService',
+        function($routeParams, $scope, $location, twitterService) {
             //sets the twitter handle display to be equal to the url handle
 
             $scope.twitterHandle = $routeParams.handle;
@@ -11,10 +11,14 @@ angular.module('textAnalysis')
 
             $scope.loadingTweets = true;
 
-            //get sentiment data about text via ng-click, 
-            //sending text to the aylien endpoint
+            /* get sentiment data about text via ng-click, 
+            sending text to the aylien endpoint */
 
-            $scope.getSentiment = twitterService.getSentiment;
+            $scope.loadResults = function(tweetText) {
+                twitterService.resultsTweet = tweetText;
+                console.log(twitterService.resultsTweet);
+                $location.path('/results/' + $routeParams.handle);
+            };
 
             //display sentiment data after returned to an object 
             //in the twitterService
@@ -26,7 +30,6 @@ angular.module('textAnalysis')
 
             twitterService.loadTweets($routeParams.handle)
                 .then(function(data) {
-
                     //store return data in Scope.tweets
                     $scope.tweets = data;
 
