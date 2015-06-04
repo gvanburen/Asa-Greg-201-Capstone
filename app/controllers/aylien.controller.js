@@ -64,4 +64,3 @@ module.exports.getConcepts = function(req, res) {
         }
     });
 };
-

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('textAnalysis', ['ngRoute'])
+angular.module('textAnalysis', ['ngRoute', 'd3'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider
             .when('/', {

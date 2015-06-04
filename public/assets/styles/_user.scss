@@ -60,6 +60,19 @@ section#analyze {
     }
 }
 
+wordcloud {
+    position: absolute;
+    z-index: 1000;
+    
+    svg {
+        width: 100em;    
+        height: 50em;
+        position: absolute;
+        top: 0;
+        left:0;
+    }
+}
+
 .title {
     font-style: bold;
 }

@@ -10,13 +10,14 @@ angular.module('textAnalysis')
             //show loading animation until data from twitter is populated
 
             $scope.loadingTweets = true;
+            
+            $scope.words = [];
 
             /* get sentiment data about text via ng-click, 
             sending text to the aylien endpoint */
 
             $scope.loadResults = function(tweetText) {
                 twitterService.resultsTweet = tweetText;
-                console.log(twitterService.resultsTweet);
                 $location.path('/results/' + $routeParams.handle);
             };
 
@@ -31,9 +32,16 @@ angular.module('textAnalysis')
             twitterService.loadTweets($routeParams.handle)
                 .then(function(data) {
                     //store return data in Scope.tweets
+                    var cloudArray = [];
                     $scope.tweets = data;
-
+                    angular.forEach($scope.tweets, function(tweet , index){
+                        cloudArray.push(tweet.text);
+                    });
+                    var cloud = cloudArray.join("");
+                    var cloudString = cloud.replace(/@_&,+(?=\.)/g, " ");
+                    $scope.words = cloudString.match(/\S+/g);
                     //turn off loading animation
+                    console.log($scope.words);
                     $scope.loadingTweets = false;
                 });
 
