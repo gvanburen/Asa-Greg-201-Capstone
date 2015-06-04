@@ -26,7 +26,7 @@ angular.module('textAnalysis')
 
             twitterService.loadTweets($routeParams.handle)
                 .then(function(data) {
-                    
+                    console.log(data);
                     //store return data in Scope.tweets
                     $scope.tweets = data;
 

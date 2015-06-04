@@ -9,6 +9,12 @@ angular.module('textAnalysis')
                 $anchorScroll();
             };
 
+            $scope.showSideNav = function(){
+                $('.button-collapse').sideNav({
+                    closeOnClick: true
+                });
+            }
+
             $scope.userInput = {};
 
             $scope.loadTweets = function() {
