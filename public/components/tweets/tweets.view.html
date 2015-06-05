@@ -14,6 +14,7 @@
         <a href="" ng-click="showSideNav()" data-activates="nav-mobile" class="button-collapse md-primary"><i class="mdi-navigation-menu white-text"></i></a>
     </div>
 </nav>
+<wordcloud words=words></wordcloud>
 <div class="heading">
     <div class="container">
         <div class="row">
@@ -29,9 +30,9 @@
         <div class="row">
             <div class="col s12 m10 offset-m1">
                 <ul class="collection">
-                    <li class="collection-item avatar" ng-repeat="tweet in tweets" ng-click="getSentiment(tweet.text)">
+                    <li class="collection-item avatar" ng-repeat="tweet in tweets" ng-click="loadResults(tweet.text)">
                         <img src="../assets/images/bird_chart.jpeg" alt="" class="circle">
-                        <span class="tweetTitle">{{ tweet.created_at }}</span>
+                        <span class="title right">{{ correctTime(tweet.created_at) | date}}</span>
                         <p>{{ tweet.text }}</p>
                     </li>
                 </ul>
