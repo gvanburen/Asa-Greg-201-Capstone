@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('textAnalysis')
-    .controller('tweetCtrl', ['$routeParams', '$scope', '$location', 'twitterService',
-        function($routeParams, $scope, $location, twitterService) {
-            //sets the twitter handle display to be equal to the url handle
+	.controller('tweetCtrl', ['$routeParams','$scope','$log', '$location', 'twitterService', 
+		function($routeParams, $scope, $log, $location, twitterService) {
+			//sets the twitter handle display to be equal to the url handle
 
             $scope.twitterHandle = $routeParams.handle;
 
@@ -31,6 +31,7 @@ angular.module('textAnalysis')
 
             twitterService.loadTweets($routeParams.handle)
                 .then(function(data) {
+                    $log.log(data);
                     //store return data in Scope.tweets
                     var cloudArray = [];
                     $scope.tweets = data;
@@ -41,7 +42,6 @@ angular.module('textAnalysis')
                     var cloudString = cloud.replace(/@_&,+(?=\.)/g, " ");
                     $scope.words = cloudString.match(/\S+/g);
                     //turn off loading animation
-                    console.log($scope.words);
                     $scope.loadingTweets = false;
                 });
 
