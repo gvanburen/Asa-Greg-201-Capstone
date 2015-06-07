@@ -20,9 +20,9 @@ angular.module('textAnalysis')
         },
       link: function postLink(scope, element, attrs) {
           // Default Values
-          var width             =   800;
-          var height            =   600;
-          var fontFamily        =   "Impact";
+          var width             =   1370;
+          var height            =   1000;
+          var fontFamily        =   "Roboto";
           var fontSize          =   100;
           var words;
 

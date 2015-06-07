@@ -8,34 +8,37 @@
         <!-- Don't know if we need a nav bar for tweets page -->
         <ul id="nav-mobile" class="side-nav white-text">
             <li><a href="" ng-click="scrollTo('intro')">About</a></li>
-            <li><a href="" ng-click="scrollTo('analyze')">Analyze</a></li> 
+            <li><a href="" ng-click="scrollTo('analyze')">Analyze</a></li>
         </ul>
-
         <a href="" ng-click="showSideNav()" data-activates="nav-mobile" class="button-collapse md-primary"><i class="mdi-navigation-menu white-text"></i></a>
     </div>
 </nav>
-<wordcloud words=words></wordcloud>
-<div class="heading">
-    <div class="container">
-        <div class="row">
-            <div class="col s12 m10 offset-m1">
-                <h1>@{{twitterHandle}}</h1>
-                <h5>Select the tweet you would like to analyze</h5>
+<div class="cloud-container" ng-if="words">
+    <wordcloud words=words></wordcloud>
+</div>
+<div ng-if="!loadingTweets" class="wrapper">
+    <div class="heading">
+        <div class="container">
+            <div class="row">
+                <div class="head-content col s12 m10 offset-m3">
+                    <h1>@{{twitterHandle}}</h1>
+                    <h5>Select the tweet you would like to analyze</h5>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="tweets">
-    <div class="container">
-        <div class="row">
-            <div class="col s12 m10 offset-m1">
-                <ul class="collection">
-                    <li class="collection-item avatar" ng-repeat="tweet in tweets" ng-click="loadResults(tweet.text)">
-                        <img src="../assets/images/bird_chart.jpeg" alt="" class="circle">
-                        <span class="title right">{{ correctTime(tweet.created_at) | date}}</span>
-                        <p>{{ tweet.text }}</p>
-                    </li>
-                </ul>
+    <div class="tweets">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m10 offset-m3">
+                    <ul class="collection">
+                        <li class="collection-item avatar" ng-repeat="tweet in tweets" ng-click="loadResults(tweet.text)">
+                            <img src="../assets/images/bird_chart.jpeg" alt="" class="circle">
+                            <span class="title right">{{ correctTime(tweet.created_at) | date}}</span>
+                            <p>{{ tweet.text }}</p>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

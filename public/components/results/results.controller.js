@@ -36,7 +36,7 @@ angular.module('textAnalysis')
             aylienService.getEntities(twitterService.resultsTweet)
                 .then(function(data) {
                     //store return data in Scope.entities
-                    $scope.classes = data.entities;
+                    $scope.entities = data.entities;
                     //turn off loading animation
                     $scope.loadingEntities = false;
                 });
@@ -46,7 +46,7 @@ angular.module('textAnalysis')
             aylienService.getClasses(twitterService.resultsTweet)
                 .then(function(data) {
                     //store return data in Scope.categories
-                    $scope.classes = data.categories;
+                    $scope.categories = data.categories;
                     //turn off loading animation
                     $scope.loadingClasses = false;
                 });

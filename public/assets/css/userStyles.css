@@ -32,6 +32,53 @@
 	font-weight: bold;
 }
 
+div.wrapper {
+  position: absolute;
+  z-index: 1;
+  top: 5em;
+}
+
+div.heading {
+  padding-bottom: 1em;
+  opacity: .9;
+}
+
+div.wrapper .head-content {
+  padding: 0;
+  margin:0;
+  background-color: #fff;
+}
+
+div.heading .row {
+  margin-bottom: 0;
+}
+
+.row .col {
+  padding: 0;
+}
+
+div.features {
+  background-color: #fff;
+}
+
+body {
+  background-color: #64A8D9;
+
+}
+
+wordcloud svg g {
+  margin: 0 auto;
+  z-index: 100;
+}
+
+wordcloud svg g text {
+    font-weight: ultrabold;
+    z-index: 100;
+}
+
+
+
+
   /* label color */
    .input-field label {
      color: #000;
