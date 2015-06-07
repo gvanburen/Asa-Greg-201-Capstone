@@ -1,9 +1,13 @@
 'use strict';
 
 angular.module('textAnalysis')
-    .controller('resultsCtrl', ['$scope', 'twitterService', 'aylienService',
-        function($scope, twitterService, aylienService) {
-
+    .controller('resultsCtrl', ['$scope', '$log', 'twitterService', 'aylienService',
+        function($scope, $log, twitterService, aylienService) {
+            $scope.collapse = function(){
+                $('.collapsible').collapsible({
+                    accordian: false
+                });
+            };
             $scope.loadingSentiment = true;
             $scope.loadingHashtags = true;
             $scope.loadingEntities = true;
@@ -17,6 +21,7 @@ angular.module('textAnalysis')
                 .then(function(data) {
                     //store return data in Scope.tweets
                     $scope.sentiment = data;
+                    $log.log($scope.sentiment);
                     //turn off loading animation
                     $scope.loadingSentiment = false;
                 });
@@ -27,6 +32,7 @@ angular.module('textAnalysis')
                 .then(function(data) {
                     //store return data in Scope.hashtags
                     $scope.hashtags = data.hashtags;
+                    $log.log($scope.hashtags);
                     //turn off loading animation
                     $scope.loadingHashtags = false;
                 });
@@ -36,7 +42,8 @@ angular.module('textAnalysis')
             aylienService.getEntities(twitterService.resultsTweet)
                 .then(function(data) {
                     //store return data in Scope.entities
-                    $scope.classes = data.entities;
+                    $scope.entities = data.entities;
+                    $log.log($scope.entities);
                     //turn off loading animation
                     $scope.loadingEntities = false;
                 });
@@ -46,7 +53,8 @@ angular.module('textAnalysis')
             aylienService.getClasses(twitterService.resultsTweet)
                 .then(function(data) {
                     //store return data in Scope.categories
-                    $scope.classes = data.categories;
+                    $scope.categories = data.categories;
+                    $log.log($scope.categories);
                     //turn off loading animation
                     $scope.loadingClasses = false;
                 });
@@ -57,6 +65,9 @@ angular.module('textAnalysis')
                 .then(function(data) {
                     //store return data in Scope.concepts
                     $scope.concepts = data.concepts;
+                    $scope.myLength = $scope.concepts.length;
+                    $log.log($scope.concepts);
+                    $log.log($scope.myLength);
                     //turn off loading animation
                     $scope.loadingConcepts = false;
                 });
