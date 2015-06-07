@@ -17,10 +17,11 @@
     <wordcloud words=words></wordcloud>
 </div>
 <div ng-if="!loadingTweets" class="wrapper">
+<div class="overlay"></div>
     <div class="heading">
         <div class="container">
             <div class="row">
-                <div class="head-content col s12 m10 offset-m3">
+                <div class="col s12 m12 offset-m2">
                     <h1>@{{twitterHandle}}</h1>
                     <h5>Select the tweet you would like to analyze</h5>
                 </div>
@@ -30,7 +31,7 @@
     <div class="tweets">
         <div class="container">
             <div class="row">
-                <div class="col s12 m10 offset-m3">
+                <div class="col s12 m10 offset-m2">
                     <ul class="collection">
                         <li class="collection-item avatar" ng-repeat="tweet in tweets" ng-click="loadResults(tweet.text)">
                             <img src="../assets/images/bird_chart.jpeg" alt="" class="circle">
