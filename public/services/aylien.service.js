@@ -12,104 +12,77 @@ angular.module('textAnalysis')
                 before submitting text of tweet to aylien endpoint */
 
                 getSentiment: function(text) {
-                    if (!angular.isDefined(aylienObj.analysisData[$routeParams.handle])) {
-                        aylienObj.analysisData[$routeParams.handle] = {
-                            sentiment: {},
-                            hashtags: {},
-                            entities: {},
-                            classe: {},
-                            concepts: {}
-                        };
-                    }
+
                     var encodedText = encodeURIComponent(text);
                     var deferred = $q.defer();
-                    if (angular.isDefined(aylienObj.analysisData[$routeParams.handle])) {
-                        deferred.resolve(aylienObj.analysisData[$routeParams.handle].sentiment);
-                    } else {
-                        $http.get('/api/tweets/sentiment/' + encodedText)
-                            .success(function(data) {
-                                deferred.resolve(data);
-                                aylienObj.analysisData[$routeParams.handle].sentiment = data;
-                            }).error(function(e) {
-                                console.log('Error ', e);
-                                deferred.reject(e);
-                            });
-                        return deferred.promise;
-                    }
+
+                    $http.get('/api/tweets/sentiment/' + encodedText)
+                        .success(function(data) {
+                            deferred.resolve(data);
+                            aylienObj.analysisData.sentiment = data;
+                        }).error(function(e) {
+                            console.log('Error ', e);
+                            deferred.reject(e);
+                        });
+                    return deferred.promise;
                 },
 
                 getHashtags: function(text) {
                     var encodedText = encodeURIComponent(text);
                     var deferred = $q.defer();
-                    if (angular.isDefined(aylienObj.analysisData[$routeParams.handle])) {
-                        deferred.resolve(aylienObj.analysisData[$routeParams.handle].hashtags);
-                    } else {
-                        $http.get('/api/tweets/hashtags/' + encodedText)
-                            .success(function(data) {
-                                deferred.resolve(data);
-                                aylienObj.analysisData[$routeParams.handle].hashtags = data;
+                    $http.get('/api/tweets/hashtags/' + encodedText)
+                        .success(function(data) {
+                            deferred.resolve(data);
+                            aylienObj.analysisData.hashtags = data;
 
-                            }).error(function(e) {
-                                console.log('Error ', e);
-                                deferred.reject(e);
-                            });
-                        return deferred.promise;
-                    }
+                        }).error(function(e) {
+                            console.log('Error ', e);
+                            deferred.reject(e);
+                        });
+                    return deferred.promise;
                 },
 
                 getEntities: function(text) {
                     var encodedText = encodeURIComponent(text);
                     var deferred = $q.defer();
-                    if (angular.isDefined(aylienObj.analysisData[$routeParams.handle])) {
-                        deferred.resolve(aylienObj.analysisData[$routeParams.handle].entities);
-                    } else {
-                        $http.get('/api/tweets/entities/' + encodedText)
-                            .success(function(data) {
-                                deferred.resolve(data);
-                                aylienObj.analysisData[$routeParams.handle].entities = data;
+                    $http.get('/api/tweets/entities/' + encodedText)
+                        .success(function(data) {
+                            deferred.resolve(data);
+                            aylienObj.analysisData.entities = data;
 
-                            }).error(function(e) {
-                                console.log('Error ', e);
-                                deferred.reject(e);
-                            });
-                        return deferred.promise;
-                    }
+                        }).error(function(e) {
+                            console.log('Error ', e);
+                            deferred.reject(e);
+                        });
+                    return deferred.promise;
                 },
 
                 getClasses: function(text) {
                     var encodedText = encodeURIComponent(text);
                     var deferred = $q.defer();
-                    if (angular.isDefined(aylienObj.analysisData[$routeParams.handle])) {
-                        deferred.resolve(aylienObj.analysisData[$routeParams.handle].classes);
-                    } else {
-                        $http.get('/api/tweets/classify/' + encodedText)
-                            .success(function(data) {
-                                deferred.resolve(data);
-                                aylienObj.analysisData[$routeParams.handle].classes = data;
-                            }).error(function(e) {
-                                console.log('Error ', e);
-                                deferred.reject(e);
-                            });
-                        return deferred.promise;
-                    }
+                    $http.get('/api/tweets/classify/' + encodedText)
+                        .success(function(data) {
+                            deferred.resolve(data);
+                            aylienObj.analysisData.classes = data;
+                        }).error(function(e) {
+                            console.log('Error ', e);
+                            deferred.reject(e);
+                        });
+                    return deferred.promise;
                 },
 
                 getConcepts: function(text) {
                     var encodedText = encodeURIComponent(text);
                     var deferred = $q.defer();
-                    if (angular.isDefined(aylienObj.analysisData[$routeParams.handle])) {
-                        deferred.resolve(aylienObj.analysisData[$routeParams.handle].concepts);
-                    } else {
-                        $http.get('/api/tweets/concepts/' + encodedText)
-                            .success(function(data) {
-                                deferred.resolve(data);
-                                aylienObj.analysisData[$routeParams.handle].concepts = data;
-                            }).error(function(e) {
-                                console.log('Error ', e);
-                                deferred.reject(e);
-                            });
-                        return deferred.promise;
-                    }
+                    $http.get('/api/tweets/concepts/' + encodedText)
+                        .success(function(data) {
+                            deferred.resolve(data);
+                            aylienObj.analysisData.concepts = data;
+                        }).error(function(e) {
+                            console.log('Error ', e);
+                            deferred.reject(e);
+                        });
+                    return deferred.promise;
                 }
             };
             return aylienObj;
