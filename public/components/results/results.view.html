@@ -18,63 +18,70 @@
     <div class="row">
         <div class="col s12">
             <ul class="collapsible" data-collapsible="expandable" ng-click="collapse()">
-                    <li ng-hide="sentiment.length == 0">
-                        <div class="collapsible-header">
-                        Sentiment Data
-                            <div ng-show=loadingSentiment class="progress resultsBar">
-                                <div class="indeterminate"></div>
-                            </div>
+                <li ng-hide="hashtags.length == 0">
+                    <div class="collapsible-header grey lighten-4">
+                    Hashtags
+                        <div ng-show=loadingHashtags class="progress resultsBar">
+                            <div class="indeterminate"></div>
                         </div>
-                        <div class="collapsible-body">
-                            <p>{{sentiment.polarity}}</p>
-                            <p>{{sentiment.subjectivity}}</p>
+                    </div>
+                    <div class="collapsible-body">
+                        <ul class="col s10 offset-s1 bold">Your recommended hashtag include:
+                            <li class="light" ng-repeat="hashtag in hashtags">{{hashtag}}</li>
+                        </ul>
+                    </div>
+                </li>
+                <li ng-hide="categories.length == 0">
+                    <div class="collapsible-header grey lighten-4">
+                    Classes
+                        <div ng-show=loadingClasses class="progress resultsBar">
+                            <div class="indeterminate"></div>
                         </div>
-                    </li>
-                    <li ng-hide="hashtags.length == 0">
-                        <div class="collapsible-header">
-                        Hashtags
-                            <div ng-show=loadingHashtags class="progress resultsBar">
-                                <div class="indeterminate"></div>
-                            </div>
+                    </div>
+                    <div class="collapsible-body">
+                        <ul class="col s10 offset-s1 bold">Your tweet falls into the follow category:
+                            <li class="light" ng-repeat="category in categories">{{category.label}}</li>
+                        </ul>
+                    </div>
+                </li>
+                <li ng-hide="entities.length == 0">
+                    <div class="collapsible-header grey lighten-4">
+                    Entities
+                        <div ng-show=loadingEntities class="progress resultsBar">
+                            <div class="indeterminate"></div>
                         </div>
-                        <div class="collapsible-body">
-                            <p ng-repeat="hashtag in hashtags">{{hashtag}}</p>
+                    </div>
+                    <div class="collapsible-body">
+                        <ul class="col s10 offset-s1 bold">Keywords that appear in the tweet:
+                            <li class="light" ng-repeat="words in entities.keyword">{{words}}</li>
+                        </ul>
+                    </div>
+                 </li>
+                <li ng-hide="sentiment.length == 0">
+                    <div class="collapsible-header grey lighten-4">
+                    Sentiment Data
+                        <div ng-show=loadingSentiment class="progress resultsBar">
+                            <div class="indeterminate"></div>
                         </div>
-                    </li>
-                    <li ng-hide="entities.length == 0">
-                        <div class="collapsible-header">
-                        Entities
-                            <div ng-show=loadingEntities class="progress resultsBar">
-                                <div class="indeterminate"></div>
-                            </div>
+                    </div>
+                    <div class="collapsible-body">
+                        <ul class="col s10 offset-s1 bold">Attitude of the tweet:
+                            <li class="light">{{sentiment.polarity}}</li>
+                            <!-- <li>{{sentiment.subjectivity}}</li> -->
+                        </ul>
+                    </div>
+                </li>
+                <li ng-hide="concepts.length == 0 || concepts.length == null">
+                    <div class="collapsible-header grey lighten-4">
+                    Concepts
+                        <div ng-show=loadingConcepts class="progress resultsBar">
+                            <div class="indeterminate"></div>
                         </div>
-                        <div class="collapsible-body">
-                            <p ng-repeat="words in entities.keyword">{{words}}</p>
-                        </div>
-                    </li>
-                    <li ng-hide="categories.length == 0">
-                        <div class="collapsible-header">
-                        Classes
-                            <div ng-show=loadingClasses class="progress resultsBar">
-                                <div class="indeterminate"></div>
-                            </div>
-                        </div>
-                        <div class="collapsible-body">
-                            <p ng-repeat="category in categories">{{category.label}}</p>
-                        </div>
-                    </li>
-                    <li ng-hide="concepts.length == 0 || concepts.length == null">
-                        <div class="collapsible-header">
-                        Concepts
-                            <div ng-show=loadingConcepts class="progress resultsBar">
-                                <div class="indeterminate"></div>
-                            </div>
-                        </div>
-                        <div class="collapsible-body">
-                            <p ng-repeat="(key, val) in concepts">{{key}}</p>
-                            <p>{{myLength}}</p>
-                        </div>
-                    </li>
+                    </div>
+                    <div class="collapsible-body">
+                        <p ng-repeat="(key, val) in concepts">{{key}}</p>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>

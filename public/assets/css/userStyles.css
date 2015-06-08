@@ -57,6 +57,14 @@
  color: #000;
 }
 
+.bold {
+	font-weight: bold;
+}
+
+.light {
+	font-weight: normal;
+}
+
 .resultsBar {
 	margin-top: -10px;
 }
