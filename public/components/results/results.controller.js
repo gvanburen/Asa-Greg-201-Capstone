@@ -63,11 +63,16 @@ angular.module('textAnalysis')
 
             aylienService.getConcepts(twitterService.resultsTweet)
                 .then(function(data) {
+                    //get the length of concepts
+                    var conceptLength = Object.keys(data.concepts).length;
                     //store return data in Scope.concepts
+                    $log.log(Object.keys(data.concepts).length);
+                    if(conceptLength < 1){
+                        $scope.concepts == null;
+                    } else {
                     $scope.concepts = data.concepts;
-                    $scope.myLength = $scope.concepts.length;
-                    $log.log($scope.concepts);
-                    $log.log($scope.myLength);
+                    }
+                    $log.log(data.concepts);
                     //turn off loading animation
                     $scope.loadingConcepts = false;
                 });

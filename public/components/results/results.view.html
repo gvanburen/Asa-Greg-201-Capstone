@@ -67,11 +67,11 @@
                     <div class="collapsible-body">
                         <ul class="col s10 offset-s1 bold">Attitude of the tweet:
                             <li class="light">{{sentiment.polarity}}</li>
-                            <!-- <li>{{sentiment.subjectivity}}</li> -->
+                            <!-- Do we want/need to have a subjectivity field? <li>{{sentiment.subjectivity}}</li> -->
                         </ul>
                     </div>
                 </li>
-                <li ng-hide="concepts.length == 0 || concepts.length == null">
+                <li ng-hide="concepts == null">
                     <div class="collapsible-header grey lighten-4">
                     Concepts
                         <div ng-show=loadingConcepts class="progress resultsBar">
@@ -79,7 +79,9 @@
                         </div>
                     </div>
                     <div class="collapsible-body">
-                        <p ng-repeat="(key, val) in concepts">{{key}}</p>
+                        <ul class="col s10 offset-s1 bold">Find linked entities:
+                           <li class="light" ng-repeat="(key, val) in concepts"><a ng-href="{{key}}">{{key}}</a></li> 
+                        </ul>
                     </div>
                 </li>
             </ul>
