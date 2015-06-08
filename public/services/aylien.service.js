@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('textAnalysis')
-    .factory('aylienService', ['$q', '$http',
-        function($q, $http) {
+    .factory('aylienService', ['$q', '$http', '$routeParams',
+        function($q, $http, $routeParams) {
 
             var aylienObj = {
 
@@ -17,9 +17,7 @@ angular.module('textAnalysis')
                     $http.get('/api/tweets/sentiment/' + encodedText)
                         .success(function(data) {
                             deferred.resolve(data);
-
                             aylienObj.analysisData.sentiment = data;
-
                         }).error(function(e) {
                             console.log('Error ', e);
                             deferred.reject(e);
@@ -33,7 +31,6 @@ angular.module('textAnalysis')
                     $http.get('/api/tweets/hashtags/' + encodedText)
                         .success(function(data) {
                             deferred.resolve(data);
-
                             aylienObj.analysisData.hashtags = data;
 
                         }).error(function(e) {
@@ -49,7 +46,6 @@ angular.module('textAnalysis')
                     $http.get('/api/tweets/entities/' + encodedText)
                         .success(function(data) {
                             deferred.resolve(data);
-
                             aylienObj.analysisData.entities = data;
 
                         }).error(function(e) {
@@ -72,6 +68,7 @@ angular.module('textAnalysis')
                         });
                     return deferred.promise;
                 },
+                
                 getConcepts: function(text) {
                     var encodedText = encodeURIComponent(text);
                     var deferred = $q.defer();

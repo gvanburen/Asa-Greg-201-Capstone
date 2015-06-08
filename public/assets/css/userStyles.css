@@ -84,6 +84,21 @@ wordcloud svg g text {
     font-weight: ultrabold;
     z-index: 100;
 }
+
+/*
+
+results-cloud svg g {
+    margin: 0 auto;
+    z-index: 100;
+}
+
+results-cloud svg g text {
+    font-weight: ultrabold;
+    z-index: 100;
+}
+
+*/
+
 /* label color */
 
 .input-field label {

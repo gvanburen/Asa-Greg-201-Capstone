@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('d3', [])
-  .factory('d3', [function () {
+  .factory('d3', function () {
             var d3;
             var π = Math.PI, ε = 1e-6, d3 = {
                 version: "3.0.8"
@@ -7802,4 +7802,4 @@ angular.module('d3', [])
                 return d3_time_scale(d3.scale.linear(), d3_time_scaleUTCMethods, d3_time_scaleUTCFormat);
             };
             return d3;
-  }]);
+  });

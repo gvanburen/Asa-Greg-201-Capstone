@@ -5,12 +5,10 @@
             <li><a class="white-text" href="" ng-click="scrollTo('intro')">About</a></li>
             <li><a class="white-text" href="" ng-click="scrollTo('analyze')">Analyze</a></li>
         </ul>
-
         <ul id="nav-mobile" class="side-nav white-text">
             <li><a href="" ng-click="scrollTo('intro')">About</a></li>
-            <li><a href="" ng-click="scrollTo('analyze')">Analyze</a></li> 
+            <li><a href="" ng-click="scrollTo('analyze')">Analyze</a></li>
         </ul>
-
         <a href="" ng-click="showSideNav()" data-activates="nav-mobile" class="button-collapse md-primary"><i class="mdi-navigation-menu white-text"></i></a>
     </div>
 </nav>
@@ -22,7 +20,8 @@
         <div class="row center valign">
             <a href="" class="btn-large teal waves-effect waves-light" ng-click="scrollTo('intro')">Learn More</a>
         </div>
-    <br><br>
+        <br>
+        <br>
     </div>
 </div>
 <div class="container features">
@@ -35,7 +34,6 @@
                     <p>Natural Language Processing technology to better understand the sentiment of any twitter account.</p>
                 </div>
             </div>
-
             <div id="intro" class="col s12 m6">
                 <div class="icon-block">
                     <h2 class="feature-icon icon"></h2>
@@ -47,14 +45,14 @@
     </div>
 </div>
 <section class="orange">
-<div class="container">
-    <div class="section">
-        <div class="row">
-            <div id="analyze" class="col s12 m10 offset-m1">
-                <h2 class="center">Enter your twitter handle to get started.</h2>
-            </div>
-            <form class="col s12 m10 offset-m1" name="submitHandle" ng-submit="loadTweets()">
-                <span class="left">
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <div id="analyze" class="col s12 m10 offset-m1">
+                    <h2 class="center">Enter your twitter handle to get started.</h2>
+                </div>
+                <form class="col s12 m10 offset-m1" name="submitHandle" ng-submit="loadTweets()">
+                    <span class="left">
                     <div ng-show="loadingTweets" class="preloader-wrapper active">
                     <div class="spinner-layer spinner-green-only">
                      <div class="circle-clipper left">
@@ -67,19 +65,19 @@
                     </div>
                     </div>
                 </span>
-                <div class="input-field col s8">
-                    <span id="atSymbol" class="prefix" ng-show="!loadingTweets">@</span>
-                    <input id="handle" type="text" name="userInput" ng-model="userInput.text" class="white-text" required>
-                    <label for="handle">twitter handle</label>
-                </div>
-                <div class="col s4">
-                    <button class="btn waves-effect waves-light" type="submit">Analyze
-                </button>
-                </div>
-            </form>
+                    <div class="input-field col s8">
+                        <span id="atSymbol" class="prefix" ng-show="!loadingTweets">@</span>
+                        <input id="handle" type="text" name="userInput" ng-model="userInput.text" class="white-text" required>
+                        <label for="handle">twitter handle</label>
+                    </div>
+                    <div class="col s4">
+                        <button class="btn waves-effect waves-light" type="submit">Analyze
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 </section>
 <footer>
 </footer>

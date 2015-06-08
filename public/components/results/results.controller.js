@@ -10,13 +10,23 @@ angular.module('textAnalysis')
             $scope.loadingClasses = true;
             $scope.loadingConcepts = true;
 
+
+            $scope.words = function() {
+                //$log.log(twitterService.resultsTweet);
+                var tweet = twitterService.resultsTweet.match(/\S+/g);
+                console.log(tweet);
+                return tweet;
+            }();
+
             //return from sentiment endpoint...
             //can display text of tweet using data from this endpoint
 
+            
             aylienService.getSentiment(twitterService.resultsTweet)
                 .then(function(data) {
                     //store return data in Scope.tweets
                     $scope.sentiment = data;
+                    
                     //turn off loading animation
                     $scope.loadingSentiment = false;
                 });
@@ -27,6 +37,7 @@ angular.module('textAnalysis')
                 .then(function(data) {
                     //store return data in Scope.hashtags
                     $scope.hashtags = data.hashtags;
+
                     //turn off loading animation
                     $scope.loadingHashtags = false;
                 });

@@ -32,8 +32,6 @@ angular.module('textAnalysis')
                     var cloud = cloudArray.join("");
                     var cloudString = cloud.replace(/@_&,+(?=\.)/g, " ");
                     $scope.words = cloudString.match(/\S+/g);
-                    //console.log($scope.words);
-                    console.log(cloudString);
                     //turn off loading animation
                     $scope.loadingTweets = false;
                 });
