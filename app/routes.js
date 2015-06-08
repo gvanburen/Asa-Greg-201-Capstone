@@ -1,6 +1,9 @@
 var controller = require('./controllers/tweet.controller');
 var aylienController = require('./controllers/aylien.controller.js');
 
+var NodeCache = require( "node-cache" );
+var myCache = new NodeCache();
+
 //require in controllers for 3rd party apis to
 // expose functions that make requests to those endpoints.
 

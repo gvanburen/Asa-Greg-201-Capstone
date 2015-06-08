@@ -7,7 +7,6 @@ angular.module('textAnalysis')
             $scope.scrollTo = function(id) {
                 $location.hash(id);
                 $anchorScroll();
-                console.log($location);
             };
 
             $scope.showSideNav = function() {

@@ -22,6 +22,7 @@ module.exports = function(config) {
             './public/assets/js/d3.js',
             './public/assets/js/d3.config.js',
             './public/app.config.js',
+            './public/app.config.Spec.js',
             './public/services/*.js',
             './public/services/*.Spec.js',
             './public/components/**/*.js',

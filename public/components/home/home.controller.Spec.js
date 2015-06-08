@@ -1,3 +1,7 @@
+//Add Test for SideNav
+//Add test for location change
+
+
 beforeEach(module('textAnalysis'));
 
 describe('homeCtrl', function() {
@@ -25,30 +29,10 @@ describe('homeCtrl', function() {
         expect(location.$$url).toEqual("#intro");
     });
 
-    //it('should show and hide the sideNav onclick', function(){
-    //  scope.showSideNav();
-    //  
-    //
-    //
-    //});
-
     it('should contain an empty userInput object', function() {
         expect(scope.userInput).toBe.empty;
         expect(scope.userInput).toBeDefined();
     });
-
-
-    //it('should navigate to tweets route when scope.submitHandle.userInput is $valid', function() {
-    //    scope.submitHandle = {
-    //      userInput: "stephenathome"
-    //    };
-    //    scope.submitHandle.userInput.$valid = true;
-    //    scope.userInput.text = 'stephenathome';
-    //
-    //    scope.loadTweets();
-    //    expect(location.path()).toEqual('/tweets/stephenathome');
-    //});
-
 
 
 });

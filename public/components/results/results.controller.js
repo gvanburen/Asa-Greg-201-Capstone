@@ -12,9 +12,7 @@ angular.module('textAnalysis')
 
 
             $scope.words = function() {
-                //$log.log(twitterService.resultsTweet);
                 var tweet = twitterService.resultsTweet.match(/\S+/g);
-                console.log(tweet);
                 return tweet;
             }();
 
@@ -24,7 +22,7 @@ angular.module('textAnalysis')
             
             aylienService.getSentiment(twitterService.resultsTweet)
                 .then(function(data) {
-                    //store return data in Scope.tweets
+                    //store return data in Scope.sentiment
                     $scope.sentiment = data;
                     
                     //turn off loading animation
