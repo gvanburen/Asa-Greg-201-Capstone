@@ -52,13 +52,19 @@ div.overlay {
     left: 0;
     width: 100%;
     height: 128em;
-    margin-top: -1em;
+    margin-top: -.6em;
     opacity: 0.6;
     background-color: #fff;
 }
 
 li.collection-item {
     background-color: #fff;
+    transition: background-color .3s ease;
+    cursor: pointer;
+}
+
+li.collection-item:hover{
+    background-color: #40c4ff;
 }
 
 div.heading .row {

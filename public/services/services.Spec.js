@@ -18,7 +18,7 @@ xdescribe('twitterService', function() {
 
     it('should contain empty string and empty array', function() {
         expect(twitterService.resultsTweet).toBe('');
-        expect(twitterService.userTimeline).toEqual([]);
+        expect(twitterService.userTimeline).toEqual({});
     });
 
     it('loadTweet function should exist within twitterService', function() {
