@@ -25,6 +25,7 @@
     "method-override": "^2.3.3",
     "mongoose": "^4.0.3",
     "morgan": "^1.5.3",
+    "node-cache": "^3.0.0",
     "twitter": "^1.2.5"
   },
   "devDependencies": {
@@ -38,6 +39,12 @@
     "gulp-imagemin": "^2.2.1",
     "gulp-plumber": "^1.0.1",
     "gulp-sass": "^2.0.1",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.12.36",
+    "karma-chrome-launcher": "^0.1.12",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-jasmine": "^0.3.5",
+    "karma-ng-html2js-preprocessor": "^0.1.2",
     "method-override": "^2.3.3",
     "mongoose": "^4.0.3",
     "morgan": "^1.5.3"

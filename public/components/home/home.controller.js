@@ -1,19 +1,19 @@
 'use strict';
 
 angular.module('textAnalysis')
-    .controller('homeCtrl', ['$scope', '$http', '$anchorScroll', '$location',
-        function($scope, $http, $anchorScroll, $location) {
-            
+    .controller('homeCtrl', ['$scope', '$anchorScroll', '$location',
+        function($scope, $anchorScroll, $location) {
+
             $scope.scrollTo = function(id) {
                 $location.hash(id);
                 $anchorScroll();
             };
 
-            $scope.showSideNav = function(){
+            $scope.showSideNav = function() {
                 $('.button-collapse').sideNav({
                     closeOnClick: true
                 });
-            }
+            };
 
             $scope.userInput = {};
 
@@ -22,5 +22,5 @@ angular.module('textAnalysis')
                     $location.path('/tweets/' + $scope.userInput.text);
                 }
             };
-        }
+        }   
     ]);

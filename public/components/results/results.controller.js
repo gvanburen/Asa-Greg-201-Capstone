@@ -14,12 +14,19 @@ angular.module('textAnalysis')
             $scope.loadingClasses = true;
             $scope.loadingConcepts = true;
 
+
+            $scope.words = function() {
+                var tweet = twitterService.resultsTweet.match(/\S+/g);
+                return tweet;
+            }();
+
             //return from sentiment endpoint...
             //can display text of tweet using data from this endpoint
 
+            
             aylienService.getSentiment(twitterService.resultsTweet)
                 .then(function(data) {
-                    //store return data in Scope.tweets
+                    //store return data in Scope.sentiment
                     $scope.sentiment = data;
                     $log.log($scope.sentiment);
                     //turn off loading animation
