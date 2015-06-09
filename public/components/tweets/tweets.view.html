@@ -13,11 +13,15 @@
         <a href="" ng-click="showSideNav()" data-activates="nav-mobile" class="button-collapse md-primary"><i class="mdi-navigation-menu white-text"></i></a>
     </div>
 </nav>
+<div ng-if="invalidHandle" class="errorMessage container">
+    <h1>Please enter a valid twitter handle.</h1>
+    <button class="btn waves-effect waves-light" ng-click="redirect()">Try Again</button>
+</div>
 <div class="cloud-container" ng-if="words">
     <wordcloud words=words></wordcloud>
 </div>
 <div ng-if="!loadingTweets" class="wrapper">
-<div class="overlay"></div>
+    <div class="overlay"></div>
     <div class="heading">
         <div class="container">
             <div class="row">
