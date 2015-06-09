@@ -1,3 +1,5 @@
+
+
 #index-banner {
     background-image: url('../../dist/images/Twitter-flat-analytics.jpg');
     background-size: cover;
@@ -83,7 +85,6 @@ wordcloud svg g text {
     font-weight: ultrabold;
     z-index: 100;
 }
-/*
 
 results-cloud svg g {
     margin: 0 auto;
@@ -94,8 +95,6 @@ results-cloud svg g text {
     font-weight: ultrabold;
     z-index: 100;
 }
-*/
-
 
 /* label color */
 
