@@ -7,7 +7,6 @@ var aylienController = require('./controllers/aylien.controller.js');
 module.exports = function(app) {
 
     app.get('/api/:name', controller.getUserTweets);
-    app.get('.api/home/:name', controller.getHomeTweets);
     app.get('/api/tweets/sentiment/:text', aylienController.getSentiment);
     app.get('/api/tweets/hashtags/:text', aylienController.getHashtags);
     app.get('/api/tweets/entities/:text', aylienController.getEntities);

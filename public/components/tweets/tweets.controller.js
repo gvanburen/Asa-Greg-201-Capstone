@@ -16,6 +16,7 @@ angular.module('textAnalysis')
                 $location.path('/results/' + $routeParams.handle);
             };
 
+
             $scope.redirect = function(){
                 $location.url('/');
             };

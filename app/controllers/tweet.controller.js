@@ -9,24 +9,16 @@ module.exports.getUserTweets = function(req, res) {
         screen_name: req.params.name
     };
 
-    client.get('statuses/user_timeline', params, function(error, tweets, response) {
-        res.json(tweets);
-        if (error) {
-            console.log(error);
-        }
-    });
-};
+    var timeline = req.params.timeline || 'home';
+    var endpoint;
 
-//pass screen_name to the twitter api to load tweets from matching account
-//using the statuses/home_timeline endpoint.
-
-module.exports.getHomeTweets = function(req, res) {
-
-    var params = {
-        screen_name: req.params.name
+    if (timeline == 'home') {
+        endpoint = 'home_timeline';
+    } else {
+        endpoint = 'home_timeline';
     };
 
-    client.get('statuses/home_timeline', params, function(error, tweets, response) {
+    client.get(endpoint, params, function(error, tweets, response) {
         res.json(tweets);
         if (error) {
             console.log(error);

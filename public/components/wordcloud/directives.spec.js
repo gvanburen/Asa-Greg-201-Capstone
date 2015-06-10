@@ -1,6 +1,6 @@
 beforeEach(module('textAnalysis'));
 
-xdescribe('wordcloud directive', function() {
+describe('wordcloud directive', function() {
 
     it('should create a svg when provided with an array of words',
         inject(function($rootScope, $compile) {
@@ -8,6 +8,13 @@ xdescribe('wordcloud directive', function() {
             element = $compile(element)($rootScope);
             expect(element.children().children().length).toBe(0);
         }));
+
+    it('should render a svg', inject(function ($rootScope, $compile) {
+        $rootScope.words = ['apple', 'tetris', 'tabasco', 'violin', 'albatross', 'pizza'];;
+        element = angular.element('<wordcloud words="words"></wordcloud>');
+        element = $compile(element)($rootScope);
+        expect(element.children().children().length).toBe(1);
+    }));
 
 
     it('should not create a svg on an empty words definition',
@@ -35,6 +42,13 @@ describe('resultscloud directive', function() {
             console.log(element);
           //  expect(element.children().children().children().length).toBe(6);
         }));
+
+    it('should render a svg', inject(function ($rootScope, $compile) {
+        $rootScope.words = ['apple', 'tetris', 'tabasco', 'violin', 'albatross', 'pizza'];
+        element = angular.element('<results-cloud words="words"></results-cloud>');
+        element = $compile(element)($rootScope);
+        expect(element.children().children().length).toBe(1);
+    }));
 
 
     it('should not create a svg on an empty words definition',

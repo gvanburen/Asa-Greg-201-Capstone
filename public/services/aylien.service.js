@@ -35,8 +35,8 @@ angular.module('textAnalysis')
                                 console.log('Error ', e);
                                 deferred.reject(e);
                             });
-                        return deferred.promise;
                     }
+                    return deferred.promise;
                 },
 
                 getHashtags: function(text) {
@@ -58,13 +58,12 @@ angular.module('textAnalysis')
                                 console.log('Error ', e);
                                 deferred.reject(e);
                             });
-                        return deferred.promise;
                     }
+                    return deferred.promise;
                 },
 
                 getEntities: function(text) {
                     aylienObj.checkCache($routeParams.handle);
-
 
                     var encodedText = encodeURIComponent(text);
                     var deferred = $q.defer();
@@ -82,8 +81,8 @@ angular.module('textAnalysis')
                                 console.log('Error ', e);
                                 deferred.reject(e);
                             });
-                        return deferred.promise;
                     }
+                    return deferred.promise;
                 },
 
                 getClasses: function(text) {
@@ -104,13 +103,12 @@ angular.module('textAnalysis')
                                 console.log('Error ', e);
                                 deferred.reject(e);
                             });
-                        return deferred.promise;
                     }
+                    return deferred.promise;
                 },
 
                 getConcepts: function(text) {
                     aylienObj.checkCache($routeParams.handle);
-
 
                     var encodedText = encodeURIComponent(text);
                     var deferred = $q.defer();
@@ -127,8 +125,8 @@ angular.module('textAnalysis')
                                 console.log('Error ', e);
                                 deferred.reject(e);
                             });
-                        return deferred.promise;
                     }
+                    return deferred.promise;
                 }
             };
             return aylienObj;
