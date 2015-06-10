@@ -10,26 +10,27 @@ angular.module('textAnalysis')
 
                 userTimeline: {},
 
-                checkCache: function(userInput) {
-                    console.log(twitterObj.userTimeline);
-                    if (!angular.isDefined(twitterObj.userTimeline[userInput])) {
-                        twitterObj.userTimeline[userInput] = [];
+                checkCache: function(handleInput, timelineInput) {
+                    if (!angular.isDefined(twitterObj.userTimeline[handleInput + '-' + timelineInput])) {
+                        twitterObj.userTimeline[handleInput + '-' + timelineInput] = [];
                     }
                 },
                 /* load tweets from usertimeline endpoint and
                 store response in userTimeline array. */
 
-                loadTweets: function(userInput, option) {
-                    twitterObj.checkCache(userInput);
+                loadTweets: function(handleInput, timelineInput) {
+                    twitterObj.checkCache(handleInput, timelineInput);
                     var deferred = $q.defer();
-                    if (twitterObj.userTimeline[userInput].length > 0) {
-                        deferred.resolve(twitterObj.userTimeline[userInput]);
+                    if (twitterObj.userTimeline[handleInput + '-' + timelineInput].length > 0) {
+                        deferred.resolve(twitterObj.userTimeline[handleInput + '-' + timelineInput]);
                     } else {
-                        $http.get('/api/', {timeline: option}, userInput)
+                        $http.get('/api/' + handleInput, {
+                                timeline: timelineInput
+                            })
                             .success(function(data) {
                                 deferred.resolve(data);
-                                twitterObj.userTimeline[userInput] = data;
-                                console.log(twitterObj.userTimeline[userInput]);
+                                twitterObj.userTimeline[handleInput + '-' + timelineInput] = data;
+                                console.log(twitterObj.userTimeline[handleInput + '-' + timelineInput]);
                             }).error(function(e) {
                                 console.log('Error: ', e);
                                 deferred.reject(e);

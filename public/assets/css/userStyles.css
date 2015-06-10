@@ -30,32 +30,49 @@
     margin-top: 0;
 }
 
-.tweetTitle {
-    font-weight: bold;
+#handle{
+    font-size: 1.5em;
 }
 
-div.wrapper {
+.twitterHandle {
+    font-size: 1.5em;
+}
+
+.loadingTweets {
+    padding-top: 15em;
+    z-index: 999;
+}
+.tweetWrapper {
     position: absolute;
     top: 5em;
     width: 100%;
+    z-index: 1;
 }
 
+/*
 div.heading {
     position: relative;
     padding-bottom: 1em;
     z-index: 1;
 }
 
-div.overlay {
+*/
+.tweetHeading {
+    padding-top: 1em;
+}
+
+.overlay {
     position: absolute;
-    top: 0;
+    top: 56px;
     left: 0;
     width: 100%;
-    height: 128em;
-    margin-top: -.6em;
-    opacity: 0.6;
+    height: 500vh;
+    margin-top: 0;
+    opacity: 0.7;
     background-color: #fff;
+    z-index: 0;
 }
+
 
 li.collection-item {
     background-color: #fff;
@@ -67,20 +84,27 @@ li.collection-item:hover{
     background-color: #40c4ff;
 }
 
-div.heading .row {
+@media only screen and (min-width : 601px) {
+    .overlay {
+        top: 64px;
+    }
+}
+
+/*div.heading .row {
     margin-bottom: 0;
 }
-
-.row .col {
+*/
+/*.row .col {
     padding: 0;
 }
-
+*/
 div.features {
     background-color: #fff;
 }
 
-body {
+#blueBackground {
     background-color: #64A8D9;
+    height: 500vh;
 }
 
 wordcloud svg g {
@@ -92,6 +116,9 @@ wordcloud svg g text {
     font-weight: ultrabold;
     z-index: 100;
 }
+
+/*
+
 
 results-cloud svg g {
     margin: 0 auto;

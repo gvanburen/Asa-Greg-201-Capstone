@@ -13,10 +13,10 @@ module.exports.getUserTweets = function(req, res) {
     var endpoint;
 
     if (timeline == 'home') {
-        endpoint = 'home_timeline';
+        endpoint = 'statuses/home_timeline';
     } else {
-        endpoint = 'home_timeline';
-    };
+        endpoint = 'statuses/user_timeline';
+    }
 
     client.get(endpoint, params, function(error, tweets, response) {
         res.json(tweets);

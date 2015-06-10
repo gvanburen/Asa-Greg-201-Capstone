@@ -1,16 +1,6 @@
 <nav class="orange" role="navigation">
     <div class="nav-wrapper container">
         <a href="#/" class="brand-logo left">Twitter Analyzer</a>
-        <ul class="right hide-on-med-and-down">
-            <li><a class="white-text" href="" ng-click="scrollTo('intro')">About</a></li>
-            <li><a class="white-text" href="" ng-click="scrollTo('analyze')">Analyze</a></li>
-        </ul>
-        <!-- Don't know if we need a nav bar for tweets page -->
-        <ul id="nav-mobile" class="side-nav white-text">
-            <li><a href="" ng-click="scrollTo('intro')">About</a></li>
-            <li><a href="" ng-click="scrollTo('analyze')">Analyze</a></li>
-        </ul>
-        <a href="" ng-click="showSideNav()" data-activates="nav-mobile" class="button-collapse md-primary"><i class="mdi-navigation-menu white-text"></i></a>
     </div>
 </nav>
 <div ng-if="invalidHandle" class="errorMessage container">
@@ -23,9 +13,34 @@
 <div ng-if="!loadingTweets" class="wrapper">
     <div class="overlay"></div>
     <div class="heading">
+</div>
+<div id="blueBackground">
+<div class="overlay"></div>
+<div class="cloud-container" ng-if="words">
+    <wordcloud words=words></wordcloud>
+</div>
+<div ng-show="loadingTweets" class="container loadingTweets">
+    <div class="row valign-wrapper">
+        <div class="col s12 valign center-align">
+            <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-blue-only">
+                  <div class="circle-clipper left">
+                    <div class="circle"></div>
+                  </div><div class="gap-patch">
+                    <div class="circle"></div>
+                  </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                  </div>
+                </div>
+            </div>    
+        </div>
+    </div>
+</div>
+<div ng-if="!loadingTweets" class="tweetWrapper">
+    <div class="tweetHeading">
         <div class="container">
             <div class="row">
-                <div class="col s12 m12 offset-m2">
+                <div class="col s12 m10 offset-m1">
                     <h1>@{{twitterHandle}}</h1>
                     <h5>Select the tweet you would like to analyze</h5>
                 </div>
@@ -35,7 +50,7 @@
     <div class="tweets">
         <div class="container">
             <div class="row">
-                <div class="col s12 m10 offset-m2">
+                <div class="col s12 m10 offset-m1">
                     <ul class="collection">
                         <li class="collection-item avatar" ng-repeat="tweet in tweets" ng-click="loadResults(tweet.text)">
                             <img src="../assets/images/bird_chart.jpeg" alt="" class="circle">
@@ -47,4 +62,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>

@@ -19,8 +19,11 @@ angular.module('textAnalysis')
 
             $scope.loadTweets = function() {
                 if ($scope.submitHandle.userInput.$valid) {
-                    $location.path('/tweets/' + $scope.userInput.text);
+                    $location.path('/tweets/' +
+                        $scope.userInput.text).search({
+                        timeline: $scope.userInput.timeline
+                    });
                 }
             };
-        }   
+        }
     ]);

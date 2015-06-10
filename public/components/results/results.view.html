@@ -13,12 +13,10 @@
         <a href="" ng-click="showSideNav()" data-activates="nav-mobile" class="button-collapse md-primary"><i class="mdi-navigation-menu white-text"></i></a>
     </div>
 </nav>
-<div>
-    <results-cloud words=words></results-cloud>
-</div>
 <div class="container">
     <div class="row">
         <div class="col s12">
+            <results-cloud words=words></results-cloud>
             <ul class="collapsible center-align" data-collapsible="expandable" ng-click="collapse()">
                 <li ng-hide="hashtags.length == 0">
                     <div class="collapsible-header grey lighten-4">
