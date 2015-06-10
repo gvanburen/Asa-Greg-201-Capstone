@@ -30,7 +30,6 @@ angular.module('textAnalysis')
                             .success(function(data) {
                                 deferred.resolve(data);
                                 twitterObj.userTimeline[handleInput + '-' + timelineInput] = data;
-                                console.log(twitterObj.userTimeline[handleInput + '-' + timelineInput]);
                             }).error(function(e) {
                                 console.log('Error: ', e);
                                 deferred.reject(e);
