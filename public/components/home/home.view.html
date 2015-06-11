@@ -52,23 +52,20 @@
                     <h2 class="center">Enter your twitter handle to get started.</h2>
                 </div>
                 <form class="col s12 m10 offset-m1" name="submitHandle" ng-submit="loadTweets()">
-                    <span class="left">
-                    <div ng-show="loadingTweets" class="preloader-wrapper active">
-                    <div class="spinner-layer spinner-green-only">
-                     <div class="circle-clipper left">
-                     <div class="circle"></div>
-                    </div><div class="gap-patch">
-                    <div class="circle"></div>
-                    </div><div class="circle-clipper right">
-                    <div class="circle"></div>
-                    </div>
-                    </div>
-                    </div>
-                </span>
                     <div class="input-field col s8">
                         <span id="atSymbol" class="prefix" ng-show="!loadingTweets">@</span>
                         <input id="handle" type="text" name="userInput" ng-model="userInput.text" class="white-text twitterHandle" required>
                         <label for="handle" id="handle">twitter handle</label>
+                        <div class="">
+                            <p>
+                                <input name="submitHandle" ng-model="userInput.timeline" value="user" type="radio" id="userTimeline"/>
+                                <label for="userTimeline">Your Tweets</label>
+                            </p>
+                            <p>
+                                <input name="submitHandle" ng-model="userInput.timeline" value="home" type="radio" id="homeTimeline"/>
+                                <label for="homeTimeline">You and Your Friend's Tweets</label>
+                            </p>
+                        </div>
                     </div>
                     <div class="col s4">
                         <button class="btn waves-effect waves-light" type="submit">Analyze

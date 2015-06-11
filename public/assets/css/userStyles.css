@@ -1,3 +1,5 @@
+
+
 #index-banner {
     background-image: url('../../dist/images/Twitter-flat-analytics.jpg');
     background-size: cover;
@@ -47,6 +49,14 @@
     z-index: 1;
 }
 
+/*
+div.heading {
+    position: relative;
+    padding-bottom: 1em;
+    z-index: 1;
+}
+
+*/
 .tweetHeading {
     padding-top: 1em;
 }
@@ -61,6 +71,17 @@
     opacity: 0.7;
     background-color: #fff;
     z-index: 0;
+}
+
+
+li.collection-item {
+    background-color: #fff;
+    transition: background-color .3s ease;
+    cursor: pointer;
+}
+
+li.collection-item:hover{
+    background-color: #40c4ff;
 }
 
 @media only screen and (min-width : 601px) {
@@ -98,6 +119,7 @@ wordcloud svg g text {
 
 /*
 
+
 results-cloud svg g {
     margin: 0 auto;
     z-index: 100;
@@ -107,8 +129,6 @@ results-cloud svg g text {
     font-weight: ultrabold;
     z-index: 100;
 }
-*/
-
 
 /* label color */
 

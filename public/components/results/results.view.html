@@ -1,16 +1,26 @@
 <nav class="orange" role="navigation">
     <div class="nav-wrapper container">
         <a href="#/" class="brand-logo left">Twitter Analyzer</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a class="white-text" href="" ng-click="scrollTo('intro')">About</a></li>
+            <li><a class="white-text" href="" ng-click="scrollTo('analyze')">Analyze</a></li>
+        </ul>
+        <!-- Don't know if we need a nav bar for results page -->
+        <ul id="nav-mobile" class="side-nav white-text">
+            <li><a href="" ng-click="scrollTo('intro')">About</a></li>
+            <li><a href="" ng-click="scrollTo('analyze')">Analyze</a></li>
+        </ul>
+        <a href="" ng-click="showSideNav()" data-activates="nav-mobile" class="button-collapse md-primary"><i class="mdi-navigation-menu white-text"></i></a>
     </div>
 </nav>
 <div class="container">
     <div class="row">
         <div class="col s12">
             <results-cloud words=words></results-cloud>
-            <ul class="collapsible" data-collapsible="expandable" ng-click="collapse()">
+            <ul class="collapsible center-align" data-collapsible="expandable" ng-click="collapse()">
                 <li ng-hide="hashtags.length == 0">
                     <div class="collapsible-header grey lighten-4">
-                    Hashtags
+                        Hashtags
                         <div ng-show=loadingHashtags class="progress resultsBar">
                             <div class="indeterminate"></div>
                         </div>
@@ -23,7 +33,7 @@
                 </li>
                 <li ng-hide="categories.length == 0">
                     <div class="collapsible-header grey lighten-4">
-                    Classes
+                        Classes
                         <div ng-show=loadingClasses class="progress resultsBar">
                             <div class="indeterminate"></div>
                         </div>
@@ -36,7 +46,7 @@
                 </li>
                 <li ng-hide="entities.length == 0">
                     <div class="collapsible-header grey lighten-4">
-                    Entities
+                        Entities
                         <div ng-show=loadingEntities class="progress resultsBar">
                             <div class="indeterminate"></div>
                         </div>
@@ -46,10 +56,10 @@
                             <li class="light" ng-repeat="words in entities.keyword">{{words}}</li>
                         </ul>
                     </div>
-                 </li>
+                </li>
                 <li ng-hide="sentiment.length == 0">
                     <div class="collapsible-header grey lighten-4">
-                    Sentiment Data
+                        Sentiment Data
                         <div ng-show=loadingSentiment class="progress resultsBar">
                             <div class="indeterminate"></div>
                         </div>
@@ -63,14 +73,14 @@
                 </li>
                 <li ng-hide="concepts == null">
                     <div class="collapsible-header grey lighten-4">
-                    Concepts
+                        Concepts
                         <div ng-show=loadingConcepts class="progress resultsBar">
                             <div class="indeterminate"></div>
                         </div>
                     </div>
                     <div class="collapsible-body">
                         <ul class="col s10 offset-s1 bold">Find linked entities:
-                           <li class="light" ng-repeat="(key, val) in concepts"><a ng-href="{{key}}">{{key}}</a></li> 
+                            <li class="light" ng-repeat="(key, val) in concepts"><a ng-href="{{key}}">{{key}}</a></li>
                         </ul>
                     </div>
                 </li>

@@ -4,7 +4,7 @@
 
 beforeEach(module('textAnalysis'));
 
-describe('homeCtrl', function() {
+xdescribe('homeCtrl', function() {
     var ctrl, scope, anchorScroll, location;
     beforeEach(inject(function($controller, $rootScope, $anchorScroll, $location) {
         scope = $rootScope.$new();

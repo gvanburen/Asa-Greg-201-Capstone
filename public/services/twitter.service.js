@@ -8,26 +8,34 @@ angular.module('textAnalysis')
 
                 resultsTweet: '',
 
-                userTimeline: [],
+                userTimeline: {},
 
+                checkCache: function(handleInput, timelineInput) {
+                    if (!angular.isDefined(twitterObj.userTimeline[handleInput + '-' + timelineInput])) {
+                        twitterObj.userTimeline[handleInput + '-' + timelineInput] = [];
+                    }
+                },
                 /* load tweets from usertimeline endpoint and
                 store response in userTimeline array. */
 
-                loadTweets: function(userInput) {
+                loadTweets: function(handleInput, timelineInput) {
+                    twitterObj.checkCache(handleInput, timelineInput);
                     var deferred = $q.defer();
-                    if (angular.isDefined(twitterObj.userTimeline[userInput])) {
-                        deferred.resolve(twitterObj.userTimeline[userInput]);
+                    if (twitterObj.userTimeline[handleInput + '-' + timelineInput].length > 0) {
+                        deferred.resolve(twitterObj.userTimeline[handleInput + '-' + timelineInput]);
                     } else {
-                        $http.get('/api/' + userInput)
+                        $http.get('/api/' + handleInput, {
+                                timeline: timelineInput
+                            })
                             .success(function(data) {
                                 deferred.resolve(data);
-                                twitterObj.userTimeline[userInput] = data;
+                                twitterObj.userTimeline[handleInput + '-' + timelineInput] = data;
                             }).error(function(e) {
                                 console.log('Error: ', e);
                                 deferred.reject(e);
                             });
-                        return deferred.promise;
                     }
+                    return deferred.promise;
                 }
             };
             return twitterObj;
