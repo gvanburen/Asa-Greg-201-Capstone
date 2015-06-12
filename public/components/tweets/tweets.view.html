@@ -1,4 +1,4 @@
-<nav class="orange" role="navigation">
+<nav class="grey darken-3" role="navigation">
     <div class="nav-wrapper container">
         <a href="#/" class="brand-logo left">Twitter Analyzer</a>
     </div>
@@ -7,18 +7,11 @@
     <h1>Please enter a valid twitter handle.</h1>
     <button class="btn waves-effect waves-light" ng-click="redirect()">Try Again</button>
 </div>
-<div class="cloud-container" ng-if="words">
-    <wordcloud words=words></wordcloud>
-</div>
-<div ng-if="!loadingTweets" class="wrapper">
-    <div class="overlay"></div>
-    <div class="heading">
-</div>
 <div id="blueBackground">
-<div class="overlay"></div>
-<div class="cloud-container" ng-if="words">
-    <wordcloud words=words></wordcloud>
-</div>
+    <div class="overlay"></div>
+    <div class="cloud-container" ng-if="words">
+        <wordcloud words=words></wordcloud>
+    </div>
 <div ng-show="loadingTweets" class="container loadingTweets">
     <div class="row valign-wrapper">
         <div class="col s12 valign center-align">
