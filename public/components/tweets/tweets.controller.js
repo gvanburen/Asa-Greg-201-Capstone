@@ -16,13 +16,23 @@ angular.module('textAnalysis')
                 $location.path('/results/' + $routeParams.handle);
             };
 
+            $scope.redirect = function() {
+                $location.url('/');
+            };
+
             //load tweets after passing the desired screen_name
             //to the twitterService and then to the twitter endpoint.
 
-            twitterService.loadTweets($routeParams.handle)
+            twitterService.loadTweets($routeParams.handle, $routeParams.timeline)
                 .then(function(data) {
                     $log.log(data);
-                    $scope.twitterHandle = data[0].user.screen_name;
+
+                    if (!data.length || !(data[0].user.hasOwnProperty("screen_name"))) {
+                        $scope.invalidHandle = true;
+                        return;
+                    }
+
+                    $scope.twitterHandle = $routeParams.handle;
                     //store return data in Scope.tweets
                     var cloudArray = [];
                     $scope.tweets = data;

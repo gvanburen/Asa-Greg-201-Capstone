@@ -3,7 +3,7 @@
 angular.module('textAnalysis')
     .controller('resultsCtrl', ['$scope', '$log', 'twitterService', 'aylienService',
         function($scope, $log, twitterService, aylienService) {
-            $scope.collapse = function(){
+            $scope.collapse = function() {
                 $('.collapsible').collapsible({
                     accordian: false
                 });
@@ -23,7 +23,7 @@ angular.module('textAnalysis')
             //return from sentiment endpoint...
             //can display text of tweet using data from this endpoint
 
-            
+
             aylienService.getSentiment(twitterService.resultsTweet)
                 .then(function(data) {
                     //store return data in Scope.sentiment
@@ -74,10 +74,10 @@ angular.module('textAnalysis')
                     var conceptLength = Object.keys(data.concepts).length;
                     //store return data in Scope.concepts
                     $log.log(Object.keys(data.concepts).length);
-                    if(conceptLength < 1){
+                    if (conceptLength < 1) {
                         $scope.concepts == null;
                     } else {
-                    $scope.concepts = data.concepts;
+                        $scope.concepts = data.concepts;
                     }
                     $log.log(data.concepts);
                     //turn off loading animation
