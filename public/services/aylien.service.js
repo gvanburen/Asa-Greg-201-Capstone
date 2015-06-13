@@ -24,9 +24,10 @@ angular.module('textAnalysis')
                     var deferred = $q.defer();
 
                     if (angular.isDefined(aylienObj.analysisData[$routeParams.handle].sentiment)) {
+                        console.log('got data from cache');
                         deferred.resolve(aylienObj.analysisData[$routeParams.handle].sentiment);
                     } else {
-
+                        console.log('got data from api');
                         $http.get('/api/tweets/sentiment/' + encodedText)
                             .success(function(data) {
                                 deferred.resolve(data);

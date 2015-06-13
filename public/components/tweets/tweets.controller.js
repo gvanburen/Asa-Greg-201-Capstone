@@ -11,9 +11,9 @@ angular.module('textAnalysis')
             /* get analysis data about text via ng-click, 
             changing location to /results/ where aylien endpoint is called */
 
-            $scope.loadResults = function(tweetText) {
+            $scope.loadResults = function(tweetText, tweetId) {
                 twitterService.resultsTweet = tweetText;
-                $location.path('/results/' + $routeParams.handle);
+                $location.path('/results/' + $routeParams.handle + '/' + tweetId);
             };
 
             $scope.redirect = function() {
@@ -26,7 +26,7 @@ angular.module('textAnalysis')
             twitterService.loadTweets($routeParams.handle, $routeParams.timeline)
                 .then(function(data) {
                     $log.log(data);
-
+                    
                     if (!data.length || !(data[0].user.hasOwnProperty("screen_name"))) {
                         $scope.invalidHandle = true;
                         return;

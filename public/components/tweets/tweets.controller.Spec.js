@@ -1,6 +1,6 @@
 beforeEach(module('textAnalysis'));
 
-xdescribe('tweetCtrl', function() {
+describe('tweetCtrl', function() {
     var ctrl, scope, twitterService, location, routeParams;
 
     beforeEach(inject(function($controller, $rootScope, _twitterService_, $routeParams, $location) {

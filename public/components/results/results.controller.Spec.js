@@ -1,6 +1,6 @@
 beforeEach(module('textAnalysis'));
 
-xdescribe('resultsCtrl', function() {
+describe('resultsCtrl', function() {
     var ctrl, scope, twitterService, aylienService;
 
     beforeEach(inject(function($controller, $rootScope, _twitterService_, _aylienService_) {

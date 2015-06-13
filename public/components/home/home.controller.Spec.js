@@ -1,10 +1,9 @@
 //Add Test for SideNav
 //Add test for location change
 
-
 beforeEach(module('textAnalysis'));
 
-xdescribe('homeCtrl', function() {
+describe('homeCtrl', function() {
     var ctrl, scope, anchorScroll, location;
     beforeEach(inject(function($controller, $rootScope, $anchorScroll, $location) {
         scope = $rootScope.$new();

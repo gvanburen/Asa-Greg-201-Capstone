@@ -1,6 +1,6 @@
 // TWITTER SERVICE
 
-xdescribe('twitterService', function() {
+describe('twitterService', function() {
     var $rootScope, $httpBackend, twitterService;
 
     beforeEach(module('textAnalysis'));
@@ -41,7 +41,7 @@ xdescribe('twitterService', function() {
 
 // AYLIEN SERVICE
 
-xdescribe('aylienService', function() {
+describe('aylienService', function() {
     var $rootScope, $routeParams, $httpBackend, aylienService;
 
     beforeEach(module('textAnalysis'));
