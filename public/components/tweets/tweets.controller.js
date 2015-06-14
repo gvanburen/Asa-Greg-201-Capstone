@@ -26,7 +26,7 @@ angular.module('textAnalysis')
             twitterService.loadTweets($routeParams.handle, $routeParams.timeline)
                 .then(function(data) {
                     $log.log(data);
-                    
+
                     if (!data.length || !(data[0].user.hasOwnProperty("screen_name"))) {
                         $scope.invalidHandle = true;
                         return;

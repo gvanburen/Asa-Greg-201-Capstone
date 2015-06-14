@@ -18,7 +18,6 @@ angular.module('textAnalysis')
 
                 getSentiment: function(text) {
                     aylienObj.checkCache($routeParams.handle);
-
                     var encodedText = encodeURIComponent(text);
                     var deferred = $q.defer();
 
