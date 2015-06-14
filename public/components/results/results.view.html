@@ -1,23 +1,13 @@
 <nav class="grey darken-3" role="navigation">
     <div class="nav-wrapper container">
         <a href="#/" class="brand-logo left">Twitter Analyzer</a>
-        <ul class="right hide-on-med-and-down">
-            <li><a class="white-text" href="" ng-click="scrollTo('intro')">About</a></li>
-            <li><a class="white-text" href="" ng-click="scrollTo('analyze')">Analyze</a></li>
-        </ul>
-        <!-- Don't know if we need a nav bar for results page -->
-        <ul id="nav-mobile" class="side-nav white-text">
-            <li><a href="" ng-click="scrollTo('intro')">About</a></li>
-            <li><a href="" ng-click="scrollTo('analyze')">Analyze</a></li>
-        </ul>
-        <a href="" ng-click="showSideNav()" data-activates="nav-mobile" class="button-collapse md-primary"><i class="mdi-navigation-menu white-text"></i></a>
     </div>
 </nav>
 <div class="container">
     <div class="row">
-        <div class="col s12">
+        <div class="col s12 center">
             <results-cloud words=words></results-cloud>
-            <ul class="collapsible center-align" data-collapsible="expandable" ng-click="collapse()">
+            <ul class="collapsible center-align" data-collapsible="accordion" ng-click="collapse()">
                 <li ng-hide="hashtags.length == 0">
                     <div class="collapsible-header grey lighten-4">
                         Hashtags

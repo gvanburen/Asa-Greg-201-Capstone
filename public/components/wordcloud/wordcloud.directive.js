@@ -23,7 +23,7 @@ angular.module('textAnalysis')
           var width             =   angular.element($window).width();
           var height            =   1000;
           var fontFamily        =   "Roboto";
-          var fontSize          =   100;
+          var fontSize          =   (width + height)/20;
           var words;
 
           // Check and set attributes, else keep then default values

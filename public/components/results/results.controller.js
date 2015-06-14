@@ -5,7 +5,7 @@ angular.module('textAnalysis')
         function($scope, $log, twitterService, aylienService) {
             $scope.collapse = function() {
                 $('.collapsible').collapsible({
-                    accordian: false
+                    accordian: true
                 });
             };
             $scope.loadingSentiment = true;
