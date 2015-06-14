@@ -13,7 +13,6 @@ angular.module('textAnalysis')
                         aylienObj.analysisData[handle] = {};
                     }
                 },
-
                 /* encode tweets to avoid routing to embedded urls
                 before submitting text of tweet to aylien endpoint */
 
@@ -27,7 +26,6 @@ angular.module('textAnalysis')
                         console.log('got data from cache');
                         deferred.resolve(aylienObj.analysisData[$routeParams.handle].sentiment);
                     } else {
-                        console.log('got data from api');
                         $http.get('/api/tweets/sentiment/' + encodedText)
                             .success(function(data) {
                                 deferred.resolve(data);
@@ -54,7 +52,6 @@ angular.module('textAnalysis')
                             .success(function(data) {
                                 deferred.resolve(data);
                                 aylienObj.analysisData[$routeParams.handle].hashtags = data;
-
                             }).error(function(e) {
                                 console.log('Error ', e);
                                 deferred.reject(e);
@@ -77,7 +74,6 @@ angular.module('textAnalysis')
                             .success(function(data) {
                                 deferred.resolve(data);
                                 aylienObj.analysisData[$routeParams.handle].entities = data;
-
                             }).error(function(e) {
                                 console.log('Error ', e);
                                 deferred.reject(e);
@@ -117,7 +113,6 @@ angular.module('textAnalysis')
                     if (angular.isDefined(aylienObj.analysisData[$routeParams.handle].concepts)) {
                         deferred.resolve(aylienObj.analysisData[$routeParams.handle].concepts);
                     } else {
-
                         $http.get('/api/tweets/concepts/' + encodedText)
                             .success(function(data) {
                                 deferred.resolve(data);

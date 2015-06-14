@@ -23,6 +23,8 @@ angular.module('textAnalysis')
                     return tweet;
                 }();
 
+                $scope.tweetText = twitterService.resultsTweet;
+
                 //return from sentiment endpoint...
                 //can display text of tweet using data from this endpoint
 

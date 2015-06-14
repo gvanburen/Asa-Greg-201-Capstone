@@ -1,10 +1,6 @@
 <nav class="orange" role="navigation">
     <div class="nav-wrapper container">
         <a href="#/" class="brand-logo left">Twitter Analyzer</a>
-        <ul class="right hide-on-med-and-down">
-            <li><a class="white-text" href="" ng-click="scrollTo('intro')">About</a></li>
-            <li><a class="white-text" href="" ng-click="scrollTo('analyze')">Analyze</a></li>
-        </ul>
         <!-- Don't know if we need a nav bar for results page -->
         <ul id="nav-mobile" class="side-nav white-text">
             <li><a href="" ng-click="scrollTo('intro')">About</a></li>
@@ -67,7 +63,6 @@
                     <div class="collapsible-body">
                         <ul class="col s10 offset-s1 bold">Attitude of the tweet:
                             <li class="light">{{sentiment.polarity}}</li>
-                            <!-- Do we want/need to have a subjectivity field? <li>{{sentiment.subjectivity}}</li> -->
                         </ul>
                     </div>
                 </li>

@@ -22,10 +22,8 @@ angular.module('textAnalysis')
                     twitterObj.checkCache(handleInput, timelineInput);
                     var deferred = $q.defer();
                     if (twitterObj.userTimeline[handleInput + '-' + timelineInput].length > 0) {
-                        console.log('got data from cache');
                         deferred.resolve(twitterObj.userTimeline[handleInput + '-' + timelineInput]);
                     } else {
-                        console.log('got data from api');
                         $http.get('/api/' + handleInput, {
                                 timeline: timelineInput
                             })
