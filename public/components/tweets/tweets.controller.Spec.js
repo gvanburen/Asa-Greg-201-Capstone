@@ -3,9 +3,10 @@ beforeEach(module('textAnalysis'));
 describe('tweetCtrl', function() {
     var ctrl, scope, twitterService, location, routeParams;
 
-    beforeEach(inject(function($controller, $rootScope, _twitterService_, $routeParams, $location) {
+    beforeEach(inject(function($controller, $rootScope, _twitterService_, $routeParams, $location, $filter) {
         scope = $rootScope.$new();
         location = $location;
+        filter = $filter;
         tweetText = 'Does anyone know where we can buy one of those "100 Days Without A Workplace Accident" signs? Ours has a lot of dried blood on it. #LSSC';
         tweetId = 606943903695175700;
         twitterService = _twitterService_;
@@ -45,10 +46,9 @@ describe('tweetCtrl', function() {
         });
     });
 
-    iit('should convert the time to MDY', function() {
-        var correctTime = scope.correctTime(mockTime);
-        expect(scope.correctTime).toEqual('Wednesday');
-
+    it('should convert the time to MDY', function() {
+        var newTime = new Date(Date.parse(mockTime));
+        filterTime = filter('date')(newTime);
+        expect(filterTime).toEqual('Aug 29, 2012');
     });
-
 });

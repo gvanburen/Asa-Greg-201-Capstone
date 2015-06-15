@@ -3,7 +3,7 @@ describe("testing config/routes", function() {
     beforeEach(module('textAnalysis'));
 
     it('should load the appropriate template and controller',
-        inject(function($location, $rootScope, $httpBackend, $route) {
+        inject(function($location, $rootScope, $route) {
 
             expect($route.routes['/'].controller).toBe('homeCtrl');
             expect($route.routes['/'].templateUrl).toEqual('./components/home/home.view.html');

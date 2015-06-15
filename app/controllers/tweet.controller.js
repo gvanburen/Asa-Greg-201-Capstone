@@ -15,6 +15,7 @@ module.exports.getUserTweets = function(req, res) {
 
     if (timeline == 'home') {
         endpoint = 'statuses/home_timeline';
+        params.include_rts = true;
     } else {
         endpoint = 'statuses/user_timeline';
         params.include_rts = false;

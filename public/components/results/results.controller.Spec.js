@@ -15,7 +15,6 @@ describe('resultsCtrl', function() {
 
     it('all functions should be defined', function() {
         expect(scope.words).toBeDefined();
-
         expect(aylienService.getSentiment).toBeDefined();
         expect(aylienService.getHashtags).toBeDefined();
         expect(aylienService.getEntities).toBeDefined();
@@ -38,14 +37,12 @@ describe('resultsCtrl', function() {
 
     it('should return hashtags data to scope and turn off loading indicator', function() {
         aylienService.getHashtags(twitterService.resultsTweet).then(function(data) {
-
             expect(scope.hashtags).not.toEqual(null);
             expect(scope.loadingHashtags).toEqual(false);
         });
     });
     it('should return entities data to scope and turn off loading indicator', function() {
         aylienService.getSentiment(twitterService.resultsTweet).then(function(data) {
-
             expect(scope.entities).not.toEqual(null);
             expect(scope.loadingEntities).toEqual(false);
         });
@@ -53,7 +50,6 @@ describe('resultsCtrl', function() {
 
     it('should return classes data to scope and turn off loading indicator', function() {
         aylienService.getSentiment(twitterService.resultsTweet).then(function(data) {
-
             expect(scope.categories).not.toEqual(null);
             expect(scope.loadingClasses).toEqual(false);
         });
@@ -61,7 +57,6 @@ describe('resultsCtrl', function() {
 
     it('should return concepts data to scope and turn off loading indicator', function() {
         aylienService.getConcepts(twitterService.resultsTweet).then(function(data) {
-
             expect(scope.concepts).not.toEqual(null);
             expect(scope.loadingConcepts).toEqual(false);
         });
