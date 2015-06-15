@@ -1,14 +1,17 @@
-//Add Test for SideNav
-//Add test for location change
 
 
 beforeEach(module('textAnalysis'));
 
-xdescribe('homeCtrl', function() {
-    var ctrl, scope, anchorScroll, location;
+describe('homeCtrl', function() {
+    var ctrl, scope, html, anchorScroll, location;
     beforeEach(inject(function($controller, $rootScope, $anchorScroll, $location) {
         scope = $rootScope.$new();
         location = $location;
+        element = angular.element(html);
+        scope.userInput = {
+            text: "stephenathome",
+            timeline: "user"
+        };
         anchorScroll = $anchorScroll;
         ctrl = $controller('homeCtrl', {
             $scope: scope
@@ -32,6 +35,19 @@ xdescribe('homeCtrl', function() {
     it('should contain an empty userInput object', function() {
         expect(scope.userInput).toBe.empty;
         expect(scope.userInput).toBeDefined();
+    });
+
+    it('should include a SideNav on smaller browser sizes', function() {
+        window.resizeTo(700, 1000);
+        var button = element.find('.button-collapse');
+        var sideNav = element.find('.side-nav');
+        button.click();
+        expect('.button-collapse').toBeTruthy();
+    });
+
+    it('should call twitter api and navigate to tweets url', function() {
+        scope.loadTweets();
+        expect(location).toEqual('/tweets');
     });
 
 
