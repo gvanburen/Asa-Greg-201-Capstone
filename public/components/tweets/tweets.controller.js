@@ -8,6 +8,8 @@ angular.module('textAnalysis')
 
             $scope.loadingTweets = true;
 
+            $scope.timeline = twitterService.timelineInput;
+
             /* get analysis data about text via ng-click, 
             changing location to /results/ where aylien endpoint is called */
 

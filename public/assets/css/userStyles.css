@@ -1,5 +1,5 @@
 #index-banner {
-    background-image: url('../../dist/images/Twitter-flat-analytics.jpg');
+    background-image: url('../../dist/images/Twitter-flat-analytics.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -98,6 +98,12 @@ li.collection-item:hover {
 
 div.features {
     background-color: #fff;
+}
+
+.errorMessage {
+    height: 61em;
+    background-size: cover;
+    background-image: url('../../dist/images/school_for_bluebird.png');
 }
 
 #blueBackground {

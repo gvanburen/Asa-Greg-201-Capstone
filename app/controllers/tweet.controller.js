@@ -7,6 +7,7 @@ module.exports.getUserTweets = function(req, res) {
     var params = {
         screen_name: req.params.name,
         count: 30,
+        include_rts: false
     };
 
     var timeline = req.params.timeline;

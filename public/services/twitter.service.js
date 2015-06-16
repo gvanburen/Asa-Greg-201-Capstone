@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('textAnalysis')
-    .factory('twitterService', ['$q', '$http', '$routeParams',
-        function($q, $http, $routeParams) {
+    .factory('twitterService', ['$q', '$http', '$log', '$routeParams',
+        function($q, $http, $log, $routeParams) {
 
             var twitterObj = {
 
@@ -22,7 +22,6 @@ angular.module('textAnalysis')
                     twitterObj.checkCache(handleInput, timelineInput);
                     var deferred = $q.defer();
                     if (twitterObj.userTimeline[handleInput + '-' + timelineInput].length > 0) {
-                        console.log(timelineInput);
                         deferred.resolve(twitterObj.userTimeline[handleInput + '-' + timelineInput]);
                     } else {
                         console.log(timelineInput);
@@ -33,7 +32,7 @@ angular.module('textAnalysis')
                                 deferred.resolve(data);
                                 twitterObj.userTimeline[handleInput + '-' + timelineInput] = data;
                             }).error(function(e) {
-                                console.log('Error: ', e);
+                                $log.log('Error: ', e);
                                 deferred.reject(e);
                             });
                     }
@@ -46,7 +45,7 @@ angular.module('textAnalysis')
                             deferred.resolve(data);
                             twitterObj.resultsTweet = data;
                         }).error(function(e) {
-                            console.log('Error: ', e);
+                            $log.log('Error: ', e);
                             deferred.reject(e);
                         });
                     return deferred.promise;

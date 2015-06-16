@@ -2,6 +2,9 @@
     <div class="nav-wrapper container">
         <a href="#/" class="brand-logo left">Twitter Analyzer</a>
     </div>
+    <div class="progress">
+        <div class="indeterminate" ng-show="loadingTweets"></div>
+    </div>
 </nav>
 <div ng-if="invalidHandle" class="errorMessage container">
     <h1>Please enter a valid twitter handle.</h1>
@@ -52,11 +55,10 @@
                         <div class="col s12 m10 offset-m1">
                             <ul class="collection">
                                 <li class="collection-item avatar" ng-repeat="tweet in tweets" ng-click="loadResults(tweet.text, tweet.id)">
-                                    <img class="circle" ng-src="{{tweet.retweeted_status.user.profile_image_url}}" alt="{{tweet.user.description}}" ng-if="tweet.retweeted_status">
+                                    <img class="circle" ng-src="{{tweet.retweeted_status.user.profile_image_url}}" alt="{{tweet.user.description}}" ng-if="tweet.retweeted_status && timeline==home">
                                     <img class="circle" ng-src="{{tweet.user.profile_image_url}}" alt="{{tweet.user.description}}" ng-if="!tweet.retweeted_status">
                                     <span class="title right">{{ correctTime(tweet.created_at) | date}}</span>
                                     <p>{{ tweet.text }}</p>
-                                    <!-- <img class="circle right-align" src="../assets/images/bird_chart.jpeg" alt="" > -->
                                 </li>
                             </ul>
                         </div>
