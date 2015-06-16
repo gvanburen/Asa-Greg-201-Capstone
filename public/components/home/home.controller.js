@@ -15,6 +15,8 @@ angular.module('textAnalysis')
                 });
             };
 
+            //Default userInput
+            
             $scope.userInput = {
                 timeline: 'user'
             };

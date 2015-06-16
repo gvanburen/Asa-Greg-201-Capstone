@@ -12,7 +12,7 @@
 <div class="container">
     <div class="row">
         <div class="col s12">
-            <results-cloud words=words></results-cloud>
+            <results-cloud ng-if="words" words=words></results-cloud>
             <ul class="collapsible center-align" data-collapsible="expandable" ng-click="collapse()">
                 <li ng-hide="hashtags.length == 0">
                     <div class="collapsible-header grey lighten-4">

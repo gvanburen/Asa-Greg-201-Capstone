@@ -45,7 +45,6 @@ angular.module('textAnalysis')
                     if (angular.isDefined(aylienObj.analysisData[$routeParams.handle].hashtags)) {
                         deferred.resolve(aylienObj.analysisData[$routeParams.handle].hashtags);
                     } else {
-
                         $http.get('/api/tweets/hashtags/' + encodedText)
                             .success(function(data) {
                                 deferred.resolve(data);
@@ -67,13 +66,12 @@ angular.module('textAnalysis')
                     if (angular.isDefined(aylienObj.analysisData[$routeParams.handle].entities)) {
                         deferred.resolve(aylienObj.analysisData[$routeParams.handle].entities);
                     } else {
-
                         $http.get('/api/tweets/entities/' + encodedText)
                             .success(function(data) {
                                 deferred.resolve(data);
                                 aylienObj.analysisData[$routeParams.handle].entities = data;
                             }).error(function(e) {
-                               $log.log('Error ', e);
+                                $log.log('Error ', e);
                                 deferred.reject(e);
                             });
                     }
@@ -89,7 +87,6 @@ angular.module('textAnalysis')
                     if (angular.isDefined(aylienObj.analysisData[$routeParams.handle].classes)) {
                         deferred.resolve(aylienObj.analysisData[$routeParams.handle].classes);
                     } else {
-
                         $http.get('/api/tweets/classify/' + encodedText)
                             .success(function(data) {
                                 deferred.resolve(data);

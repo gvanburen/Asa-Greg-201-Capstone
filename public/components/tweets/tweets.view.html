@@ -54,8 +54,8 @@
                     <div class="row">
                         <div class="col s12 m10 offset-m1">
                             <ul class="collection">
-                                <li class="collection-item avatar" ng-repeat="tweet in tweets" ng-click="loadResults(tweet.text, tweet.id)">
-                                    <img class="circle" ng-src="{{tweet.retweeted_status.user.profile_image_url}}" alt="{{tweet.user.description}}" ng-if="tweet.retweeted_status && timeline==home">
+                                <li class="collection-item avatar" ng-repeat="tweet in tweets" ng-click="loadResults(tweet.text, tweet.id_str)">
+                                    <img class="circle" ng-src="{{tweet.retweeted_status.user.profile_image_url}}" alt="{{tweet.user.description}}" ng-if="tweet.retweeted_status">
                                     <img class="circle" ng-src="{{tweet.user.profile_image_url}}" alt="{{tweet.user.description}}" ng-if="!tweet.retweeted_status">
                                     <span class="title right">{{ correctTime(tweet.created_at) | date}}</span>
                                     <p>{{ tweet.text }}</p>

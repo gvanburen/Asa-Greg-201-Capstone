@@ -1,4 +1,4 @@
-'use strict';
+ 'use strict';
 
 angular.module('textAnalysis')
     .controller('tweetCtrl', ['$routeParams', '$scope', '$log', '$location', 'twitterService',
