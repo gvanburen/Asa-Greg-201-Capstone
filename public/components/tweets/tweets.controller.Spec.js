@@ -1,12 +1,14 @@
 beforeEach(module('textAnalysis'));
 
-xdescribe('tweetCtrl', function() {
+describe('tweetCtrl', function() {
     var ctrl, scope, twitterService, location, routeParams;
 
-    beforeEach(inject(function($controller, $rootScope, _twitterService_, $routeParams, $location) {
+    beforeEach(inject(function($controller, $rootScope, _twitterService_, $routeParams, $location, $filter) {
         scope = $rootScope.$new();
         location = $location;
+        filter = $filter;
         tweetText = 'Does anyone know where we can buy one of those "100 Days Without A Workplace Accident" signs? Ours has a lot of dried blood on it. #LSSC';
+        tweetId = 606943903695175700;
         twitterService = _twitterService_;
         routeParams = $routeParams;
         mockTime = "Wed Aug 29 17:12:58 +0000 2012";
@@ -25,9 +27,9 @@ xdescribe('tweetCtrl', function() {
     });
 
     it('should set twitterService.resultsTweet and navigate to the appropriate results path', function() {
-        scope.loadResults(tweetText);
+        scope.loadResults(tweetText, tweetId);
         expect(twitterService.resultsTweet).toEqual(tweetText);
-        expect(location.$$url).toEqual('/results/stephenathome');
+        expect(location.$$url).toEqual('/results/stephenathome/606943903695175700');
     });
 
     it('should redirect to the home view', function() {
@@ -37,7 +39,6 @@ xdescribe('tweetCtrl', function() {
 
     it('should use the twitterService to load tweets using the twitterHandle specified in the route', function() {
         twitterService.loadTweets(routeParams.handle).then(function(data) {
-
             expect(scope.twitterHandle).toEqual(routeParams.handle);
             expect(scope.tweets).not.toBe(null);
             expect(scope.loadingTweets).toBe(false);
@@ -45,16 +46,9 @@ xdescribe('tweetCtrl', function() {
         });
     });
 
-    //it('should convert the time to MDY', function() {
-    //    scope.correctTime(mockTime);
-    //    scope.$apply();
-    //        expect(scope.correctTime).toEqual('Wednesday');
-//
-    //});
-
-
-
-
-
-
+    it('should convert the time to MDY', function() {
+        var newTime = new Date(Date.parse(mockTime));
+        filterTime = filter('date')(newTime);
+        expect(filterTime).toEqual('Aug 29, 2012');
+    });
 });

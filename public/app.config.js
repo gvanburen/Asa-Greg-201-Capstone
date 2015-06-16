@@ -11,7 +11,7 @@ angular.module('textAnalysis', ['ngRoute', 'ngAnimate', 'd3'])
                 templateUrl: './components/tweets/tweets.view.html',
                 controller: 'tweetCtrl'
             })
-            .when('/results/:handle/', {
+            .when('/results/:handle/:id', {
                 templateUrl: './components/results/results.view.html',
                 controller: 'resultsCtrl'
             })
