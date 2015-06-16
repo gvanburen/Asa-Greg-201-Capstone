@@ -85,10 +85,10 @@ angular.module('textAnalysis')
             //check this logic
 
             if (twitterService.resultsTweet.length) {
+                console.log('length not zero');
                 init();
             } else {
-                twitterService.getSingleTweet($routeParams.id).then(function(tweet) {
-                    twitterService.resultsTweet = tweet;
+                twitterService.getSingleTweet($routeParams.id).then(function() {
                     init();
                 });
             }
