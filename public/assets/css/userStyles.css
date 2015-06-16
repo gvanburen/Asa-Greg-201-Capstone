@@ -13,15 +13,22 @@
 .sentiment-icon {
     background-image: url('../../dist/images/sentiment.png');
     background-repeat: no-repeat;
-    background-image: center;
+    background-position: center;
     background-size: contain;
 }
 
 .feature-icon {
     background-image: url('../../dist/images/analytics-large.jpg');
     background-repeat: no-repeat;
-    background-image: center;
+    background-position: center;
     background-size: contain;
+}
+
+.hashtag-icon {
+    background-image: url('../../dist/images/hashtag.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain; 
 }
 
 .footer {
@@ -206,4 +213,8 @@ results-cloud svg g text {
 
 .progress .indeterminate {
     background-color: #40c4ff;
+}
+
+.timelineSelection {
+    margin-bottom: 3em;
 }

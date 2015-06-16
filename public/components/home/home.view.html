@@ -25,20 +25,27 @@
     </div>
 </div>
 <section class="grey lighten-5">
-<div class="container features grey lighten-5">
+<div class="features grey lighten-5">
     <div class="section">
         <div class="row">
-            <div id="intro" class="col s12 m6">
-                <div class="icon-block">
-                    <h2 class="center sentiment-icon icon"></h2>
-                    <h2 class="center">Sentiment Analysis</h2>
+            <div class="col s12 m4 intro">
+                <div class="icon-block center">
+                    <h3 class="center hashtag-icon icon"></h3>
+                    <h5 class="center">Hashtag Suggestion</h5>
+                    <p>Get hashtag suggestions for better discoverability on social media.</p>
+                </div>
+            </div>
+            <div class="col s12 m4 intro">
+                <div class="icon-block center">
+                    <h3 class="center sentiment-icon icon"></h3>
+                    <h5 class="center">Sentiment Analysis</h5>
                     <p>Natural Language Processing technology to better understand the sentiment of any twitter account.</p>
                 </div>
             </div>
-            <div id="intro" class="col s12 m6">
-                <div class="icon-block">
-                    <h2 class="feature-icon icon"></h2>
-                    <h2 class="center">Some other Analysis</h2>
+            <div class="col s12 m4 intro">
+                <div class="icon-block center">
+                    <h3 class="feature-icon icon"></h3>
+                    <h5 class="center">Some other Analysis</h5>
                     <p>Explanation about feature. Some text relevant to this feature. Maybe about data visualization..</p>
                 </div>
             </div>
@@ -54,11 +61,11 @@
                     <h2 class="center white-text">Enter your twitter handle to get started.</h2>
                 </div>
                 <form class="col s12 m10 offset-m1" name="submitHandle" ng-submit="loadTweets()">
-                    <div class="input-field col s9">
+                    <div class="input-field col s12 m9">
                         <span id="atSymbol" class="prefix" ng-show="!loadingTweets">@</span>
                         <input id="handle" type="text" name="userInput" ng-model="userInput.text" class="white-text twitterHandle" required>
                         <label for="handle" id="handle">twitter handle</label>
-                        <div class="">
+                        <div class="timelineSelection">
                             <h5>
                                 <input name="submitHandle" ng-model="userInput.timeline" value="user" type="radio" id="userTimeline"/>
                                 <label for="userTimeline">Your Tweets</label>
@@ -69,7 +76,7 @@
                             </h5>
                         </div>
                     </div>
-                    <div class="col s3">
+                    <div class="col s12 m3">
                         <button class="light-blue darken-1 btn waves-effect waves-light" type="submit">Analyze
                         </button>
                     </div>
