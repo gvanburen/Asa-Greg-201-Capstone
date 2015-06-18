@@ -2,6 +2,9 @@
     <div class="nav-wrapper container">
         <a href="#/" class="brand-logo left">Twitter Analyzer</a>
     </div>
+    <div class="progress">
+        <div class="indeterminate" ng-show="loadingTweets"></div>
+    </div>
 </nav>
 <div ng-if="invalidHandle" class="errorMessage container">
     <h1>Please enter a valid twitter handle.</h1>

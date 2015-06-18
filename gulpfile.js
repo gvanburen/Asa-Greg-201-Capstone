@@ -1,11 +1,20 @@
 var gulp = require('gulp');
-var plumber = require('gulp-plumber');
 var autoprefixer = require('gulp-autoprefixer');
 var concat = require('gulp-concat');
 var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
-var sass = require('gulp-sass');
+var minifyHtml = require('gulp-minify-html');
+var minifyCss = require('gulp-minify-css');
+var usemin = require('gulp-usemin');
+var rev = require('gulp-rev');
+var uglify = require('gulp-uglify');
 
+gulp.task('copy-html-files', function() {
+    gulp.src(['./public/**/*.html', '!./public/index.html'], {
+            base: './public'
+        })
+        .pipe(gulp.dest('public/dist/'));
+});
 
 gulp.task('images', function() {
     gulp.src('./public/assets/images/*')
@@ -17,25 +26,23 @@ gulp.task('images', function() {
         .pipe(gulp.dest('public/dist/images/'));
 });
 
-
-gulp.task('styles', function() {
-    gulp.src([
-            './public/assets/styles/**/*.scss',
-            './public/assets/styles/*.scss',
-        ])
-        .pipe(plumber({
-            errorHandler: function(error) {
-                console.log(error.message);
-                this.emit('end');
-            }
+gulp.task('usemin', function() {
+    gulp.src('./public/index.html')
+        .pipe(usemin({
+            html: [minifyHtml({
+                empty: true
+            })],
+            css: [autoprefixer('last 2 versions'), minifyCss(), 'concat', rev()],
+            vendorCss: [rev()],
+            vendor: [rev()],
+            js: [uglify(), rev()]
         }))
-        .pipe(sass())
-        .pipe(autoprefixer('last 2 versions'))
-        .pipe(gulp.dest('public/dist/styles/'));
+        .pipe(gulp.dest('public/dist/'));
 });
 
 
 gulp.task('default', ['images'], function() {
-    gulp.watch('./public/assets/styles/**/*.scss', ['styles']);
-
+    gulp.watch('./public/assets/css/userStyles.css', ['styles']);
 });
+
+gulp.task('build', ['copy-html-files', 'images', 'usemin']);

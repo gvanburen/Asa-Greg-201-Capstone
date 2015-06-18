@@ -23,8 +23,6 @@ angular.module('textAnalysis')
                     return tweet;
                 }();
 
-                $scope.tweetText = twitterService.resultsTweet;
-
                 //return from sentiment endpoint...
                 //can display text of tweet using data from this endpoint
 
@@ -87,8 +85,7 @@ angular.module('textAnalysis')
             if (twitterService.resultsTweet.length) {
                 init();
             } else {
-                twitterService.getSingleTweet($routeParams.id).then(function(tweet) {
-                    twitterService.resultsTweet = tweet;
+                twitterService.getSingleTweet($routeParams.id).then(function() {
                     init();
                 });
             }

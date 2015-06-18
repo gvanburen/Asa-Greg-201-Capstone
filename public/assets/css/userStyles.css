@@ -8,7 +8,7 @@
 }
 
 #index-banner {
-    background-image: url('../../dist/images/Twitter-flat-analytics.jpg');
+    background-image: url('../images/Twitter-flat-analytics.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -34,7 +34,7 @@ h2 {
 }
 
 .sentiment-icon {
-    background-image: url('../../dist/images/sentiment.png');
+    background-image: url('../images/sentiment.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -131,6 +131,7 @@ li.collection-item {
     cursor: pointer;
 }
 
+<<<<<<< HEAD
 li.collection-item:hover{
     background-color: #40c4ff;
 }

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('textAnalysis')
-    .factory('twitterService', ['$q', '$http', '$routeParams',
-        function($q, $http, $routeParams) {
+    .factory('twitterService', ['$q', '$http', '$log', '$routeParams',
+        function($q, $http, $log, $routeParams) {
 
             var twitterObj = {
 
@@ -22,31 +22,30 @@ angular.module('textAnalysis')
                     twitterObj.checkCache(handleInput, timelineInput);
                     var deferred = $q.defer();
                     if (twitterObj.userTimeline[handleInput + '-' + timelineInput].length > 0) {
-                        console.log(timelineInput);
                         deferred.resolve(twitterObj.userTimeline[handleInput + '-' + timelineInput]);
                     } else {
-                        console.log(timelineInput);
-                        $http.get('/api/' + handleInput, {
-                                timeline: timelineInput
+                            $http.get('/api/' + handleInput, {
+                                params: { timeline: timelineInput }
                             })
                             .success(function(data) {
                                 deferred.resolve(data);
                                 twitterObj.userTimeline[handleInput + '-' + timelineInput] = data;
                             }).error(function(e) {
-                                console.log('Error: ', e);
+                                $log.log('Error: ', e);
                                 deferred.reject(e);
                             });
                     }
                     return deferred.promise;
                 },
+
                 getSingleTweet: function(tweetId) {
                     var deferred = $q.defer();
-                    $http.get('/api/results/' + $routeParams.id)
+                    $http.get('/api/results/' + tweetId)
                         .success(function(data) {
                             deferred.resolve(data);
-                            twitterObj.resultsTweet = data;
+                            twitterObj.resultsTweet = data.text;
                         }).error(function(e) {
-                            console.log('Error: ', e);
+                            $log.log('Error: ', e);
                             deferred.reject(e);
                         });
                     return deferred.promise;

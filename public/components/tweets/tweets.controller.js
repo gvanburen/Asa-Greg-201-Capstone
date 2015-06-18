@@ -1,4 +1,4 @@
-'use strict';
+ 'use strict';
 
 angular.module('textAnalysis')
     .controller('tweetCtrl', ['$routeParams', '$scope', '$log', '$location', 'twitterService',
@@ -7,6 +7,8 @@ angular.module('textAnalysis')
             //show loading animation until data from twitter is populated
 
             $scope.loadingTweets = true;
+
+            $scope.timeline = twitterService.timelineInput;
 
             /* get analysis data about text via ng-click, 
             changing location to /results/ where aylien endpoint is called */
