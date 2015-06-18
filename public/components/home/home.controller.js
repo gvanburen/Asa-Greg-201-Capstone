@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('textAnalysis')
-    .controller('homeCtrl', ['$scope', '$anchorScroll', '$location',
-        function($scope, $anchorScroll, $location) {
+    .controller('homeCtrl', ['$scope', '$anchorScroll', '$location', '$log',
+        function($scope, $anchorScroll, $location, $log) {
 
             $scope.scrollTo = function(id) {
                 $location.hash(id);
@@ -10,8 +10,8 @@ angular.module('textAnalysis')
             };
 
             $scope.showSideNav = function() {
-                console.log($scope.userInput);
-                console.log($scope.submitHandle.userInput);
+                $log.log($scope.userInput);
+                $log.log($scope.submitHandle.userInput);
                 $('.button-collapse').sideNav({
                     closeOnClick: true
                 });

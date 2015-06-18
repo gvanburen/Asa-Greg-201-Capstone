@@ -1,32 +1,49 @@
 'use strict';
+var root = "http://localhost:8080";
+var username = "gvanburen";
 
-//var ROOT = "http://localhost:8080";
-
-describe('home page tests', function() {
-	var ROOT = "http://localhost:8080";
-
-	it('should input twitter handle', function(){
-		browser.get(ROOT + '/');
-		expect(browser.getTitle()).toEqual('Tweet Analyzer');
-		element(by.id('handle')).sendKeys('gvanburen');
-		var radioButton = element(by.css('.orange div div div form div input'))
-		browser.driver.actions().mouseMove(radioButton).perform();
-		element.all(radioButton).then(function(elm){
-			elm[0].click();
-		});
-		browser.debugger();
-		element(by.buttonText('Analyze')).click();
+describe('Tweet Analyzer App', function(){
+	it('should have a title', function(){
+		browser.get(root + "/");
+		expect(browser.getTitle()).toEqual("Tweet Analyzer");
 	});
 
+	it('should input twitter username', function(){
+		element(by.id("handle")).sendKeys(username);
+		element(by.buttonText("Analyze")).click();
+	});
 
-    //xit('should display the homepage with links and form input', function() {
-    //    browser.get(ROOT + "/");
-//
-    //    //check for buttons
-    //    expect(element.all(by.css('waves-effect')).count()).toBe(2);
-//
-    //    //check for input
-    //    expect(element.all(by.tagName('input')).count()).toBe(1);
-    //});
+	it('should navigate to the tweets page', function(){
+		expect(browser.getCurrentUrl()).toContain("#/tweets/");
+	});
 
+	it('should select a tweet from the displayed tweets', function(){
+		expect(element.all(by.repeater("tweet in tweets")).count()).toMatch(24);
+		element.all(by.repeater("tweet in tweets")).get(2).click();
+	});
+
+	it('should navigate to the results page', function(){
+		expect(browser.getCurrentUrl()).toContain("#/results/");
+	});
+
+	it('should display the word cloud and results', function(){
+		expect(element(by.tagName("results-cloud")).isDisplayed()).toBe(true);
+		expect(element(by.id("hash")).isDisplayed()).toBe(true);
+		expect(element(by.id("cat")).isDisplayed()).toBe(true);
+		expect(element(by.id("ent")).isDisplayed()).toBe(true);
+		expect(element(by.id("sent")).isDisplayed()).toBe(true);
+		expect(element(by.id("cont")).isDisplayed()).toBe(true);
+	});
+
+	it('should open up the accordion', function(){
+		var hash = element(by.id("hash"))
+		var results = element.all(by.css(".collapsible-header"));
+		var info = element(by.css(".collapsible-body"));
+		
+		expect(results.count()).toEqual(5);
+		expect(info.isDisplayed()).toBe(false);
+		browser.actions().doubleClick(results.get(0)).perform();
+		hash.click();
+		expect(info.isDisplayed()).toBe(true);
+	});
 });

@@ -8,7 +8,7 @@
         <div class="col s12 center">
             <results-cloud words=words></results-cloud>
             <ul class="collapsible center-align" data-collapsible="accordion" ng-click="collapse()">
-                <li ng-hide="hashtags.length == 0">
+                <li id="hash" ng-hide="hashtags.length == 0">
                     <div class="collapsible-header grey lighten-4">
                         Hashtags
                         <div ng-show=loadingHashtags class="progress resultsBar">
@@ -21,7 +21,7 @@
                         </ul>
                     </div>
                 </li>
-                <li ng-hide="categories.length == 0">
+                <li id="cat" ng-hide="categories.length == 0">
                     <div class="collapsible-header grey lighten-4">
                         Classes
                         <div ng-show=loadingClasses class="progress resultsBar">
@@ -34,7 +34,7 @@
                         </ul>
                     </div>
                 </li>
-                <li ng-hide="entities.length == 0">
+                <li id="ent" ng-hide="entities.length == 0">
                     <div class="collapsible-header grey lighten-4">
                         Entities
                         <div ng-show=loadingEntities class="progress resultsBar">
@@ -47,7 +47,7 @@
                         </ul>
                     </div>
                 </li>
-                <li ng-hide="sentiment.length == 0">
+                <li id="sent" ng-hide="sentiment.length == 0">
                     <div class="collapsible-header grey lighten-4">
                         Sentiment Data
                         <div ng-show=loadingSentiment class="progress resultsBar">
@@ -60,7 +60,7 @@
                         </ul>
                     </div>
                 </li>
-                <li ng-hide="concepts == null">
+                <li id="cont" ng-hide="concepts == null">
                     <div class="collapsible-header grey lighten-4">
                         Concepts
                         <div ng-show=loadingConcepts class="progress resultsBar">

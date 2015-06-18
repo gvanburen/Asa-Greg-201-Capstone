@@ -1,6 +1,6 @@
 <nav class="grey darken-3" role="navigation">
     <div class="nav-wrapper container">
-        <a href="#/" class="brand-logo left">Twitter Analyzer</a>
+        <a href="#/" class="brand-logo left" id="brandLogo">Twitter Analyzer</a>
         <ul class="right hide-on-med-and-down">
             <li><a class="white-text" href="" ng-click="scrollTo('intro')">About</a></li>
             <li><a class="white-text" href="" ng-click="scrollTo('analyze')">Analyze</a></li>
@@ -24,29 +24,29 @@
         <br>
     </div>
 </div>
-<section class="grey lighten-5">
-<div class="features grey lighten-5">
+<section class="grey lighten-5 valign-wrapper" id="intro">
+<div class="features grey lighten-5 valign">
     <div class="section">
         <div class="row">
-            <div class="col s12 m4 intro">
+            <div class="col s12 m4">
                 <div class="icon-block center">
                     <h3 class="center hashtag-icon icon"></h3>
                     <h5 class="center">Hashtag Suggestion</h5>
                     <p>Get hashtag suggestions for better discoverability on social media.</p>
                 </div>
             </div>
-            <div class="col s12 m4 intro">
+            <div class="col s12 m4">
                 <div class="icon-block center">
                     <h3 class="center sentiment-icon icon"></h3>
                     <h5 class="center">Sentiment Analysis</h5>
                     <p>Natural Language Processing technology to better understand the sentiment of any twitter account.</p>
                 </div>
             </div>
-            <div class="col s12 m4 intro">
+            <div class="col s12 m4">
                 <div class="icon-block center">
-                    <h3 class="feature-icon icon"></h3>
-                    <h5 class="center">Some other Analysis</h5>
-                    <p>Explanation about feature. Some text relevant to this feature. Maybe about data visualization..</p>
+                    <h3 class="center classify-icon icon"></h3>
+                    <h5 class="center">Classification</h5>
+                    <p>Classifies your tweet according to IPTC NewsCode standard into more than 500 categories..</p>
                 </div>
             </div>
         </div>
