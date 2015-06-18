@@ -6,7 +6,9 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var port = process.env.PORT || 8080;
 
-app.use(express.static(__dirname + '/public'));
+
+app.use('/bower_components', express.static(__dirname + '/bower_components'));
+app.use(express.static(__dirname + '/public/dist'));
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({
