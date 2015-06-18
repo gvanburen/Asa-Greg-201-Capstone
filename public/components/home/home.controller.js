@@ -16,15 +16,14 @@ angular.module('textAnalysis')
             };
 
             //Default userInput
-            
+
             $scope.userInput = {
                 timeline: 'user'
             };
 
             $scope.loadTweets = function() {
                 if ($scope.submitHandle.userInput.$valid) {
-                    $location.path('/tweets/' +
-                        $scope.userInput.text).search({
+                    $location.path('/tweets/' + $scope.userInput.text).search({
                         timeline: $scope.userInput.timeline
                     });
                 }

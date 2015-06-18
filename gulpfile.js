@@ -1,5 +1,4 @@
 var gulp = require('gulp');
-var plumber = require('gulp-plumber');
 var autoprefixer = require('gulp-autoprefixer');
 var concat = require('gulp-concat');
 var imagemin = require('gulp-imagemin');
@@ -8,9 +7,14 @@ var minifyHtml = require('gulp-minify-html');
 var minifyCss = require('gulp-minify-css');
 var usemin = require('gulp-usemin');
 var rev = require('gulp-rev');
-var inject = require('gulp-inject');
 var uglify = require('gulp-uglify');
 
+gulp.task('copy-html-files', function() {
+    gulp.src(['./public/**/*.html', '!./public/index.html'], {
+            base: './public'
+        })
+        .pipe(gulp.dest('public/dist/'));
+});
 
 gulp.task('images', function() {
     gulp.src('./public/assets/images/*')
@@ -25,7 +29,11 @@ gulp.task('images', function() {
 gulp.task('usemin', function() {
     gulp.src('./public/index.html')
         .pipe(usemin({
-            html: [minifyHtml({empty: true})],
+            html: [minifyHtml({
+                empty: true
+            })],
+            css: [autoprefixer('last 2 versions'), minifyCss(), 'concat', rev()],
+            vendorCss: [rev()],
             vendor: [uglify(), rev()],
             js: [uglify(), rev()]
         }))
@@ -33,38 +41,8 @@ gulp.task('usemin', function() {
 });
 
 
-//gulp.task('index', function() {
-//    var target = gulp.src('./public/index.html');
-//    var vendorStream = gulp.src([], {
-//        read: false
-//    });
-//    var configStream = gulp.src([], {
-//        read: false
-//    });
-//    var componentStream = gulp.src([], {
-//        read: false
-//    });
-//    var assetStream = gulp.src([], {
-//        read: false
-//    });
-//});
-
-gulp.task('styles', function() {
-    gulp.src('./public/assets/css/userStyles.css')
-        .pipe(plumber({
-            errorHandler: function(error) {
-                console.log(error.message);
-                this.emit('end');
-            }
-        }))
-        .pipe(autoprefixer('last 2 versions'))
-        .pipe(minifyCss())
-        .pipe(gulp.dest('public/dist/styles/'));
-});
-
-
 gulp.task('default', ['images'], function() {
     gulp.watch('./public/assets/css/userStyles.css', ['styles']);
 });
 
-gulp.task('build', ['images', 'usemin']);
+gulp.task('build', ['copy-html-files', 'images', 'usemin']);

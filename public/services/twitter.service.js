@@ -8,8 +8,6 @@ angular.module('textAnalysis')
 
                 resultsTweet: '',
 
-                tweetArray: [],
-
                 userTimeline: {},
 
                 checkCache: function(handleInput, timelineInput) {
@@ -26,8 +24,9 @@ angular.module('textAnalysis')
                     if (twitterObj.userTimeline[handleInput + '-' + timelineInput].length > 0) {
                         deferred.resolve(twitterObj.userTimeline[handleInput + '-' + timelineInput]);
                     } else {
-                        $http.get('/api/' + handleInput, {
-                                timeline: timelineInput
+                        $log.log('timelineInput :', timelineInput);
+                            $http.get('/api/' + handleInput, {
+                                params: { timeline: timelineInput }
                             })
                             .success(function(data) {
                                 deferred.resolve(data);
