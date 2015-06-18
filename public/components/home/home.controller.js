@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('textAnalysis')
-    .controller('homeCtrl', ['$scope', '$anchorScroll', '$location', '$log',
-        function($scope, $anchorScroll, $location, $log) {
+    .controller('homeCtrl', ['$scope', '$anchorScroll', '$location',
+        function($scope, $anchorScroll, $location) {
 
             $scope.scrollTo = function(id) {
                 $location.hash(id);
