@@ -34,7 +34,7 @@ gulp.task('usemin', function() {
             })],
             css: [autoprefixer('last 2 versions'), minifyCss(), 'concat', rev()],
             vendorCss: [rev()],
-            vendor: [uglify(), rev()],
+            vendor: [rev()],
             js: [uglify(), rev()]
         }))
         .pipe(gulp.dest('public/dist/'));

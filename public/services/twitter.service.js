@@ -24,7 +24,6 @@ angular.module('textAnalysis')
                     if (twitterObj.userTimeline[handleInput + '-' + timelineInput].length > 0) {
                         deferred.resolve(twitterObj.userTimeline[handleInput + '-' + timelineInput]);
                     } else {
-                        $log.log('timelineInput :', timelineInput);
                             $http.get('/api/' + handleInput, {
                                 params: { timeline: timelineInput }
                             })
