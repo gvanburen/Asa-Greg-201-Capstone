@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('textAnalysis')
-  .directive('resultsCloud', ['d3',function (d3) {
+  .directive('resultsCloud', ['d3','$window',function (d3,$window) {
     return {
       restrict: 'E',
         scope:{
@@ -20,8 +20,8 @@ angular.module('textAnalysis')
         },
       link: function postLink(scope, element, attrs) {
           // Default Values
-          var height            =   400;
-          var width             =   900;
+          var height            =   angular.element($window).height()*0.5;
+          var width             =   angular.element($window).width()*0.75;
           var fontFamily        =   "Roboto";
           var fontSize          =   200;
           var words;

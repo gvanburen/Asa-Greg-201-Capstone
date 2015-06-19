@@ -1,4 +1,4 @@
-<nav class="orange" role="navigation">
+<nav class="grey darken-3" role="navigation">
     <div class="nav-wrapper container">
         <a href="#/" class="brand-logo left">Twitter Analyzer</a>
     </div>
@@ -10,60 +10,56 @@
     <h1>Please enter a valid twitter handle.</h1>
     <button class="btn waves-effect waves-light" ng-click="redirect()">Try Again</button>
 </div>
-<div class="cloud-container" ng-if="words">
-    <wordcloud words=words></wordcloud>
-</div>
-<div ng-if="!loadingTweets" class="wrapper">
+<div id="blueBackground">
     <div class="overlay"></div>
-    <div class="heading">
+    <div class="cloud-container" ng-if="words">
+        <wordcloud words=words></wordcloud>
     </div>
-    <div id="blueBackground">
-        <div class="overlay"></div>
-        <div ng-show="loadingTweets" class="container loadingTweets">
-            <div class="row valign-wrapper">
-                <div class="col s12 valign center-align">
-                    <div class="preloader-wrapper big active">
-                        <div class="spinner-layer spinner-blue-only">
-                            <div class="circle-clipper left">
-                                <div class="circle"></div>
-                            </div>
-                            <div class="gap-patch">
-                                <div class="circle"></div>
-                            </div>
-                            <div class="circle-clipper right">
-                                <div class="circle"></div>
-                            </div>
+    <div ng-show="loadingTweets" class="container loadingTweets">
+        <div class="row valign-wrapper">
+            <div class="col s12 valign center-align">
+                <div class="preloader-wrapper big active">
+                    <div class="spinner-layer spinner-blue-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
                         </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+    <div ng-if="!loadingTweets" class="tweetWrapper">
+        <div class="tweetHeading">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m10 offset-m1">
+                        <h1>@{{twitterHandle}}</h1>
+                        <h5>Select the tweet you would like to analyze</h5>
                     </div>
                 </div>
             </div>
         </div>
-        <div ng-if="!loadingTweets" class="tweetWrapper">
-            <div class="tweetHeading">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s12 m10 offset-m1">
-                            <h1>@{{twitterHandle}}</h1>
-                            <h5>Select the tweet you would like to analyze</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tweets">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s12 m10 offset-m1">
-                            <ul class="collection">
-                                <li class="collection-item avatar" ng-repeat="tweet in tweets" ng-click="loadResults(tweet.text, tweet.id_str)">
-                                    <img class="circle" ng-src="{{tweet.retweeted_status.user.profile_image_url}}" alt="{{tweet.user.description}}" ng-if="tweet.retweeted_status">
-                                    <img class="circle" ng-src="{{tweet.user.profile_image_url}}" alt="{{tweet.user.description}}" ng-if="!tweet.retweeted_status">
-                                    <span class="title right">{{ correctTime(tweet.created_at) | date}}</span>
-                                    <p>{{ tweet.text }}</p>
-                                </li>
-                            </ul>
-                        </div>
+        <div class="tweets">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m10 offset-m1">
+                        <ul class="collection">
+                            <li class="collection-item avatar" ng-repeat="tweet in tweets" ng-click="loadResults(tweet.text, tweet.id)">
+                                <img class="circle" ng-src="{{tweet.retweeted_status.user.profile_image_url}}" alt="{{tweet.user.description}}" ng-if="tweet.retweeted_status">
+                                <img class="circle" ng-src="{{tweet.user.profile_image_url}}" alt="{{tweet.user.description}}" ng-if="!tweet.retweeted_status">
+                                <span class="title right">{{ correctTime(tweet.created_at) | date}}</span>
+                                <p>{{ tweet.text }}</p>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>

@@ -1,9 +1,32 @@
+#brandLogo  {
+    font-size: 1.7em;
+}
+@media only screen and (min-width: 601px) {
+    #brandLogo {
+        font-size: 2.1em;
+    }
+}
+
 #index-banner {
     background-image: url('../images/Twitter-flat-analytics.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     height: 80vh;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+@media only screen and (min-width: 601px) {
+    h2 {
+        font-size: 3.56em;
+    }
+}
+
+#intro {
+    min-height: 35em;
 }
 
 .icon {
@@ -13,29 +36,39 @@
 .sentiment-icon {
     background-image: url('../images/sentiment.png');
     background-repeat: no-repeat;
-    background-image: center;
+    background-position: center;
     background-size: contain;
 }
 
-.feature-icon {
-    background-image: url('../images/analytics-large.jpg');
+.classify-icon {
+    background-image: url('../../dist/images/bird_reading_edit.png');
     background-repeat: no-repeat;
-    background-image: center;
+    background-position: center;
     background-size: contain;
+}
+
+.hashtag-icon {
+    background-image: url('../../dist/images/hashtag.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain; 
+}
+
+.footer {
+    padding-top: 3em;
 }
 
 #atSymbol {
     margin-top: 0;
 }
 
-#handle {
+#handle, .twitterHandle{
     font-size: 1.5em;
 }
 
-.twitterHandle {
-    font-size: 1.5em;
+#analyze > h2 {
+    margin-bottom: 1em;
 }
-
 .loadingTweets {
     padding-top: 15em;
     z-index: 999;
@@ -65,21 +98,11 @@ div.heading {
     top: 56px;
     left: 0;
     width: 100%;
-    height: 330vh;
+    height: 350vh;
     margin-top: 0;
     opacity: 0.7;
     background-color: #fff;
     z-index: 0;
-}
-
-li.collection-item {
-    background-color: #fff;
-    transition: background-color .3s ease;
-    cursor: pointer;
-}
-
-li.collection-item:hover {
-    background-color: #40c4ff;
 }
 
 @media only screen and (min-width: 601px) {
@@ -87,6 +110,12 @@ li.collection-item:hover {
         top: 64px;
     }
 }
+
+#blueBackground {
+    background-color: #64A8D9;
+    height: 350vh;
+}
+
 /*div.heading .row {
     margin-bottom: 0;
 }
@@ -96,20 +125,21 @@ li.collection-item:hover {
 }
 */
 
-div.features {
+li.collection-item {
+    background-color: #fff;
+    transition: background-color .3s ease;
+    cursor: pointer;
+}
+
+li.collection-item:hover{
+    background-color: #40c4ff;
+}
+
+
+/*div.features {
     background-color: #fff;
 }
-
-.errorMessage {
-    height: 61em;
-    background-size: cover;
-    background-image: url('../images/school_for_bluebird.png');
-}
-
-#blueBackground {
-    background-color: #64A8D9;
-    height: 180vh;
-}
+*/
 
 wordcloud svg g {
     margin: 0 auto;
@@ -137,6 +167,22 @@ results-cloud svg g text {
 
 .input-field label {
     color: #000;
+}
+
+/* label underline color */ 
+.input-field input {
+    border-bottom: 1px solid #000;
+}
+
+/* radio button color*/
+.input-field input[type=radio]:checked + label:after {
+    border: 2px solid #FFF;
+    background-color: #FFF;
+}
+
+.input-field input[type=radio]:not(:checked) + label,
+.input-field input[type=radio]:checked + label {
+    font-size: 0.8em;
 }
 /* label focus color */
 
@@ -177,4 +223,17 @@ results-cloud svg g text {
 
 .resultsBar {
     margin-top: -10px;
+}
+
+/* progress bar */
+.progress {
+    background-color: #D0E4F3;
+}
+
+.progress .indeterminate {
+    background-color: #40c4ff;
+}
+
+.timelineSelection {
+    margin-bottom: 3em;
 }
