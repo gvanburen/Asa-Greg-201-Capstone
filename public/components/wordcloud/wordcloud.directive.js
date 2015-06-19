@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('textAnalysis')
-  .directive('wordcloud', ['d3',function (d3) {
+  .directive('wordcloud', ['d3', '$window', function (d3, $window) {
     return {
       restrict: 'E',
         scope:{
@@ -20,10 +20,10 @@ angular.module('textAnalysis')
         },
       link: function postLink(scope, element, attrs) {
           // Default Values
-          var width             =   1370;
+          var width             =   angular.element($window).width();
           var height            =   1000;
           var fontFamily        =   "Roboto";
-          var fontSize          =   100;
+          var fontSize          =   (width + height)/20;
           var words;
 
           // Check and set attributes, else keep then default values
