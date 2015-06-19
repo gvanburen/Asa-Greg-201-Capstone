@@ -15,7 +15,7 @@ module.exports = function(app) {
     app.get('/api/tweets/concepts/:text', aylienController.getConcepts);
 
     app.get('*', function(req, res) {
-        res.sendFile('/public/index.html');
+        res.sendFile('/public/dist/index.html');
     });
 };
 

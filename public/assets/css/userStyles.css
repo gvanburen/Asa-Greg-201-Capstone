@@ -1,6 +1,7 @@
-#brandLogo  {
+#brandLogo {
     font-size: 1.7em;
 }
+
 @media only screen and (min-width: 601px) {
     #brandLogo {
         font-size: 2.1em;
@@ -45,17 +46,17 @@ h2 {
 }
 
 .classify-icon {
-    background-image: url('../../dist/images/bird_reading_edit.png');
+    background-image: url('../images/bird_reading.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
 }
 
 .hashtag-icon {
-    background-image: url('../../dist/images/hashtag.png');
+    background-image: url('../images/hashtag.png');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain; 
+    background-size: contain;
 }
 
 .footer {
@@ -66,13 +67,15 @@ h2 {
     margin-top: 0;
 }
 
-#handle, .twitterHandle{
+#handle,
+.twitterHandle {
     font-size: 1.5em;
 }
 
 #analyze > h2 {
     margin-bottom: 1em;
 }
+
 .loadingTweets {
     padding-top: 15em;
     z-index: 999;
@@ -117,7 +120,7 @@ div.heading {
 
 #blueBackground {
     background-color: #64A8D9;
-    height: 350vh;
+    height: 160vh;
 }
 
 li.collection-item {
@@ -126,7 +129,7 @@ li.collection-item {
     cursor: pointer;
 }
 
-li.collection-item:hover{
+li.collection-item:hover {
     background-color: #40c4ff;
 }
 
@@ -139,19 +142,18 @@ wordcloud svg g text {
     font-weight: ultrabold;
     z-index: 100;
 }
-
 /* label color */
 
 .input-field label {
     color: #000;
 }
+/* label underline color */
 
-/* label underline color */ 
 .input-field input {
     border-bottom: 1px solid #000;
 }
-
 /* radio button color*/
+
 .input-field input[type=radio]:checked + label:after {
     border: 2px solid #FFF;
     background-color: #FFF;
@@ -201,8 +203,8 @@ wordcloud svg g text {
 .resultsBar {
     margin-top: -10px;
 }
-
 /* progress bar */
+
 .progress {
     background-color: #D0E4F3;
 }
