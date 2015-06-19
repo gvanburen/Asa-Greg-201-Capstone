@@ -47,6 +47,14 @@ gulp.task('copyfonts', function() {
         .pipe(gulp.dest('public/dist/font'));
 });
 
+gulp.task('copymaps', function() {
+    gulp.src([
+            './public/bower_components/angular/angular.min.js.map',
+            './public/bower_components/angular-route/angular-route.min.js.map',
+        ])
+        .pipe(gulp.dest('public/dist/js'));
+});
+
 gulp.task('clean:dist', function(cb) {
     del('./public/dist', cb);
 });
@@ -57,4 +65,4 @@ gulp.task('default', ['images'], function() {
 
 gulp.task('clean', ['clean:dist']);
 
-gulp.task('build', ['copy-html-files', 'copyfonts', 'images', 'usemin']);
+gulp.task('build', ['copy-html-files', 'copyfonts', 'copymaps', 'images', 'usemin']);
