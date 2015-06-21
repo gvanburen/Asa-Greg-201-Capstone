@@ -1,15 +1,17 @@
 'use strict';
 
 angular.module('textAnalysis')
-    .factory('storageService', ['$window',
-        function($window) {
+    .factory('storageService', ['$window', '$log',
+        function($window, $log) {
         	return {
-        		setData: function(val){
-        			$window.localStorage.setItem('tweet', val);
+        		setData: function(key, val){
+        			$window.localStorage.setItem(key, val);
+                    $log.log('set ' + key + ' data: ' + val);
         			return this;
         		},
-        		getData: function(){
-        			return $window.localStorage.getItem('tweet');
+        		getData: function(key){
+                    $log.log('retreiving ' + key + ' data');
+        			return $window.localStorage.getItem(key);
         		}
         	};
        	}]);
