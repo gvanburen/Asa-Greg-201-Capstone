@@ -8,23 +8,15 @@ angular.module('textAnalysis')
 
                 analysisData: {},
 
-                checkCache: function(handle) {
-                    if (!angular.isDefined(aylienObj.analysisData[handle])) {
-                        aylienObj.analysisData[handle] = {};
-                    }
-                },
+                //dont' need anymore cache anymore with storageService
                 /* encode tweets to avoid routing to embedded urls
                 before submitting text of tweet to aylien endpoint */
 
-                getSentiment: function(text) {
-                    aylienObj.checkCache($routeParams.handle);
+                getSentiment: function(text) { 
                     var encodedText = encodeURIComponent(text);
                     var deferred = $q.defer();
 
-                    if (angular.isDefined(aylienObj.analysisData[$routeParams.handle].sentiment)) {
-                        deferred.resolve(aylienObj.analysisData[$routeParams.handle].sentiment);
-                    } else {
-                        $http.get('/api/tweets/sentiment/' + encodedText)
+                    $http.get('/api/tweets/sentiment/' + encodedText)
                             .success(function(data) {
                                 deferred.resolve(data);
                                 aylienObj.analysisData[$routeParams.handle].sentiment = data;
@@ -32,20 +24,14 @@ angular.module('textAnalysis')
                                 $log.log('Error ', e);
                                 deferred.reject(e);
                             });
-                    }
                     return deferred.promise;
                 },
 
                 getHashtags: function(text) {
-                    aylienObj.checkCache($routeParams.handle);
-
                     var encodedText = encodeURIComponent(text);
                     var deferred = $q.defer();
 
-                    if (angular.isDefined(aylienObj.analysisData[$routeParams.handle].hashtags)) {
-                        deferred.resolve(aylienObj.analysisData[$routeParams.handle].hashtags);
-                    } else {
-                        $http.get('/api/tweets/hashtags/' + encodedText)
+                    $http.get('/api/tweets/hashtags/' + encodedText)
                             .success(function(data) {
                                 deferred.resolve(data);
                                 aylienObj.analysisData[$routeParams.handle].hashtags = data;
@@ -53,20 +39,14 @@ angular.module('textAnalysis')
                                 $log.log('Error ', e);
                                 deferred.reject(e);
                             });
-                    }
                     return deferred.promise;
                 },
 
                 getEntities: function(text) {
-                    aylienObj.checkCache($routeParams.handle);
-
                     var encodedText = encodeURIComponent(text);
                     var deferred = $q.defer();
 
-                    if (angular.isDefined(aylienObj.analysisData[$routeParams.handle].entities)) {
-                        deferred.resolve(aylienObj.analysisData[$routeParams.handle].entities);
-                    } else {
-                        $http.get('/api/tweets/entities/' + encodedText)
+                    $http.get('/api/tweets/entities/' + encodedText)
                             .success(function(data) {
                                 deferred.resolve(data);
                                 aylienObj.analysisData[$routeParams.handle].entities = data;
@@ -74,20 +54,14 @@ angular.module('textAnalysis')
                                 $log.log('Error ', e);
                                 deferred.reject(e);
                             });
-                    }
                     return deferred.promise;
                 },
 
                 getClasses: function(text) {
-                    aylienObj.checkCache($routeParams.handle);
-
                     var encodedText = encodeURIComponent(text);
                     var deferred = $q.defer();
 
-                    if (angular.isDefined(aylienObj.analysisData[$routeParams.handle].classes)) {
-                        deferred.resolve(aylienObj.analysisData[$routeParams.handle].classes);
-                    } else {
-                        $http.get('/api/tweets/classify/' + encodedText)
+                    $http.get('/api/tweets/classify/' + encodedText)
                             .success(function(data) {
                                 deferred.resolve(data);
                                 aylienObj.analysisData[$routeParams.handle].classes = data;
@@ -95,20 +69,14 @@ angular.module('textAnalysis')
                                 $log.log('Error ', e);
                                 deferred.reject(e);
                             });
-                    }
                     return deferred.promise;
                 },
 
                 getConcepts: function(text) {
-                    aylienObj.checkCache($routeParams.handle);
-
                     var encodedText = encodeURIComponent(text);
                     var deferred = $q.defer();
 
-                    if (angular.isDefined(aylienObj.analysisData[$routeParams.handle].concepts)) {
-                        deferred.resolve(aylienObj.analysisData[$routeParams.handle].concepts);
-                    } else {
-                        $http.get('/api/tweets/concepts/' + encodedText)
+                    $http.get('/api/tweets/concepts/' + encodedText)
                             .success(function(data) {
                                 deferred.resolve(data);
                                 aylienObj.analysisData[$routeParams.handle].concepts = data;
@@ -116,7 +84,6 @@ angular.module('textAnalysis')
                                 $log.log('Error ', e);
                                 deferred.reject(e);
                             });
-                    }
                     return deferred.promise;
                 }
             };

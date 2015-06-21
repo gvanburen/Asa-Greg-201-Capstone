@@ -1,20 +1,26 @@
 'use strict';
 
 angular.module('textAnalysis')
-    .controller('resultsCtrl', ['$scope', '$log', '$routeParams', 'twitterService', 'aylienService',
-        function($scope, $log, $routeParams, twitterService, aylienService) {
+    .controller('resultsCtrl', ['$scope', '$log', '$routeParams', 'twitterService', 'aylienService', 'storageService',
+        function($scope, $log, $routeParams, twitterService, aylienService, storageService) {
 
             $scope.collapse = function() {
                 $('.collapsible').collapsible({
                     accordian: true
                 });
             };
+            
             $scope.loadingSentiment = true;
             $scope.loadingHashtags = true;
             $scope.loadingEntities = true;
             $scope.loadingClasses = true;
             $scope.loadingConcepts = true;
 
+            if (twitterService.resultsTweet == ""){
+                twitterService.resultsTweet = storageService.getData();
+            } else {
+                storageService.setData(twitterService.resultsTweet);
+            }
 
             var init = function() {
 
