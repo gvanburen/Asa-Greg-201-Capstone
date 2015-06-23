@@ -35,7 +35,8 @@ gulp.task('usemin', function() {
             css: [autoprefixer('last 2 versions'), minifyCss(), 'concat', rev()],
             vendorCss: [rev()],
             vendor: [rev()],
-            js: [uglify(), rev()]
+            js: [uglify().on('error', function(e) { console.log('\x07',e.message); return this.end(); }),
+                rev()]
         }))
         .pipe(gulp.dest('public/dist/'));
 });
