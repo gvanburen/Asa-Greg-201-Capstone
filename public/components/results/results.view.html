@@ -6,7 +6,9 @@
 <div class="container">
     <div class="row">
         <div class="col s12 center">
-            <results-cloud words=words></results-cloud>
+            <div ng-if="words">
+                <results-cloud words=words></results-cloud>
+            </div>
             <ul class="collapsible center-align" data-collapsible="accordion" ng-click="collapse()">
                 <li id="hash" ng-hide="hashtags.length == 0">
                     <div class="collapsible-header grey lighten-4">

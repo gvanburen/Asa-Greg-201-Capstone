@@ -9,12 +9,13 @@ angular.module('textAnalysis')
                     accordian: true
                 });
             };
+
+            
             $scope.loadingSentiment = true;
             $scope.loadingHashtags = true;
             $scope.loadingEntities = true;
             $scope.loadingClasses = true;
             $scope.loadingConcepts = true;
-
 
             var init = function() {
 
