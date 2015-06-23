@@ -37,7 +37,8 @@ gulp.task('usemin', function() {
             vendorCss: [rev()],
             assets: [uglify(), 'concat', rev()],
             vendor: [rev()],
-            js: [uglify(), rev()]
+            js: [uglify().on('error', function(e) { console.log('\x07',e.message); return this.end(); }),
+                rev()]
         }))
         .pipe(gulp.dest('public/dist/'));
 });

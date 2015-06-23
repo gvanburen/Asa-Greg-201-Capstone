@@ -1,6 +1,6 @@
 <nav class="grey darken-3" role="navigation">
     <div class="nav-wrapper container">
-        <a href="#/" class="brand-logo left">Twitter Analyzer</a>
+        <a href="#/" class="brand-logo left" id="brandLogo">Twitter Analyzer</a>
     </div>
 </nav>
 <div ng-if="invalidHandle" class="errorMessage container">
@@ -9,7 +9,7 @@
 </div>
 <div id="blueBackground">
     <div class="overlay"></div>
-    <div ng-if="words" class="cloud-container" >
+    <div ng-if="words" class="cloud-container">
         <wordcloud words=words></wordcloud>
     </div>
     <div ng-show="loadingTweets" class="container loadingTweets">
