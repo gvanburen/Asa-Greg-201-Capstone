@@ -8,7 +8,14 @@ var port = process.env.PORT || 8080;
 
 
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
-app.use(express.static(__dirname + '/public'));
+
+var staticPath = '/public';
+
+if (process.env.ENVIRONMENT && process.env.ENVIRONMENT == 'production') {
+    staticPath = '/public/dist';
+}
+
+app.use(express.static(__dirname + staticPath));
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({

@@ -123,30 +123,6 @@ div.heading {
     height: 1000vh;
 }
 
-/*div.heading .row {
-    margin-bottom: 0;
->>>>>>> upstream/master
-}
-
-li.collection-item {
-    background-color: #fff;
-    transition: background-color .3s ease;
-    cursor: pointer;
-}
-
-li.collection-item:hover {
-    background-color: #40c4ff;
-}
-
-wordcloud svg g {
-    margin: 0 auto;
-    z-index: 100;
-}
-
-wordcloud svg g text {
-    font-weight: ultrabold;
-    z-index: 100;
-}
 /* label color */
 
 .input-field label {
