@@ -1,4 +1,4 @@
-var client = require('../../config/twitter.config.js');
+ var client = require('../../config/twitter.config.js');
 
 //pass screen_name to the twitter api to load tweets from matching account
 //using the statuses/user_timeline endpoint.
@@ -16,9 +16,11 @@ module.exports.getUserTweets = function(req, res) {
     var endpoint;
 
     if (timeline == 'home') {
-        endpoint = 'statuses/home_timeline';
+        endpoint = 'statuses/user_timeline';
+        params.include_rts = 1;
     } else {
         endpoint = 'statuses/user_timeline';
+        params.include_rts = false;
     }
 
     client.get(endpoint, params, function(error, tweets, response) {

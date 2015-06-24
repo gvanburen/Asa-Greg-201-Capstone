@@ -8,6 +8,7 @@ var minifyCss = require('gulp-minify-css');
 var usemin = require('gulp-usemin');
 var rev = require('gulp-rev');
 var uglify = require('gulp-uglify');
+var del = require('del');
 
 gulp.task('copy-html-files', function() {
     gulp.src(['./public/**/*.html', '!./public/index.html'], {
@@ -34,6 +35,7 @@ gulp.task('usemin', function() {
             })],
             css: [autoprefixer('last 2 versions'), minifyCss(), 'concat', rev()],
             vendorCss: [rev()],
+            assets: [uglify(), 'concat', rev()],
             vendor: [rev()],
             js: [uglify().on('error', function(e) { console.log('\x07',e.message); return this.end(); }),
                 rev()]
@@ -41,9 +43,27 @@ gulp.task('usemin', function() {
         .pipe(gulp.dest('public/dist/'));
 });
 
+gulp.task('copyfonts', function() {
+    gulp.src('./public/assets/font/**/*.{ttf,woff,woff2,eof,svg}')
+        .pipe(gulp.dest('public/dist/font'));
+});
+
+gulp.task('copymaps', function() {
+    gulp.src([
+            './public/bower_components/angular/angular.min.js.map',
+            './public/bower_components/angular-route/angular-route.min.js.map',
+        ])
+        .pipe(gulp.dest('public/dist/js'));
+});
+
+gulp.task('clean:dist', function(cb) {
+    del('./public/dist', cb);
+});
 
 gulp.task('default', ['images'], function() {
     gulp.watch('./public/assets/css/userStyles.css', ['styles']);
 });
 
-gulp.task('build', ['copy-html-files', 'images', 'usemin']);
+gulp.task('clean', ['clean:dist']);
+
+gulp.task('build', ['copy-html-files', 'copyfonts', 'copymaps', 'images', 'usemin']);
