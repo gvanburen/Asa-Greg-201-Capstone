@@ -1,0 +1,89 @@
+<nav class="grey darken-3" role="navigation">
+    <div class="nav-wrapper container">
+        <a href="#/" class="brand-logo left" id="brandLogo">Twitter Analyzer</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a class="white-text" href="" ng-click="scrollTo('intro')">About</a></li>
+            <li><a class="white-text" href="" ng-click="scrollTo('analyze')">Analyze</a></li>
+        </ul>
+        <ul id="nav-mobile" class="side-nav white-text">
+            <li><a href="" ng-click="scrollTo('intro')">About</a></li>
+            <li><a href="" ng-click="scrollTo('analyze')">Analyze</a></li>
+        </ul>
+        <a href="" ng-click="showSideNav()" data-activates="nav-mobile" class="button-collapse md-primary"><i class="mdi-navigation-menu white-text"></i></a>
+    </div>
+</nav>
+<div class="section no-pad-bot valign-wrapper" id="index-banner">
+    <div class="container">
+        <div class="row center">
+            <h2 class="header col s12 light black-text">Find out what your friends are really saying</h2>
+        </div>
+        <div class="row center valign">
+            <a href="" class="btn-large orange waves-effect waves-light" ng-click="scrollTo('intro')">Learn More</a>
+        </div>
+        <br>
+        <br>
+    </div>
+</div>
+<section class="grey lighten-5 valign-wrapper" id="intro">
+<div class="features grey lighten-5 valign">
+    <div class="section">
+        <div class="row">
+            <div class="col s12 m4">
+                <div class="icon-block center">
+                    <h3 class="center hashtag-icon icon"></h3>
+                    <h5 class="center">Hashtag Suggestion</h5>
+                    <p>Get hashtag suggestions for better discoverability on social media.</p>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <div class="icon-block center">
+                    <h3 class="center sentiment-icon icon"></h3>
+                    <h5 class="center">Sentiment Analysis</h5>
+                    <p>Natural Language Processing technology to better understand the sentiment of any twitter account.</p>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <div class="icon-block center">
+                    <h3 class="center classify-icon icon"></h3>
+                    <h5 class="center">Classification</h5>
+                    <p>Classifies your tweet according to IPTC NewsCode standard into more than 500 categories..</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<section class="orange footer">
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <div id="analyze" class="col s12 m10 offset-m1">
+                    <h2 class="center white-text">Enter your twitter handle to get started.</h2>
+                </div>
+                <form class="col s12 m10 offset-m1" name="submitHandle" ng-submit="loadTweets()">
+                    <div class="input-field col s12 m9">
+                        <span id="atSymbol" class="prefix" ng-show="!loadingTweets">@</span>
+                        <input id="handle" type="text" name="userInput" ng-model="userInput.text" class="white-text twitterHandle" required>
+                        <label for="handle" id="handle">twitter handle</label>
+                        <div class="timelineSelection">
+                            <h5>
+                                <input name="submitHandle" ng-model="userInput.timeline" value="user" type="radio" id="userTimeline"/>
+                                <label for="userTimeline">Your Tweets</label>
+                            </h5>
+                            <h5>
+                                <input name="submitHandle" ng-model="userInput.timeline" value="home" type="radio" id="homeTimeline"/>
+                                <label for="homeTimeline">You and Your Friend's Tweets</label>
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="col s12 m3">
+                        <button class="light-blue darken-1 btn waves-effect waves-light" type="submit">Analyze
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<footer>
+</footer>

@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('d3')
-  .config( ['$provide', function ($provide) {
+    .config(['$provide', function($provide) {
 
-        var d3WorldCloudDecorator = function($delegate){
+        var d3WorldCloudDecorator = function($delegate) {
 
             // Word cloud layout by Jason Davies, http://www.jasondavies.com/word-cloud/
             // Algorithm due to Jonathan Feinberg, http://static.mrfeinberg.com/bv_ch03.pdf
             var d3 = $delegate;
-            (function (exports) {
+            (function(exports) {
                 function cloud() {
                     var size = [256, 256],
                         text = cloudText,
@@ -25,13 +25,13 @@ angular.module('d3')
                         timer = null,
                         cloud = {};
 
-                    cloud.start = function () {
+                    cloud.start = function() {
                         var board = zeroArray((size[0] >> 5) * size[1]),
                             bounds = null,
                             n = words.length,
                             i = -1,
                             tags = [],
-                            data = words.map(function (d, i) {
+                            data = words.map(function(d, i) {
                                 d.text = text.call(this, d, i);
                                 d.font = font.call(this, d, i);
                                 d.style = fontStyle.call(this, d, i);
@@ -40,9 +40,9 @@ angular.module('d3')
                                 d.size = ~~fontSize.call(this, d, i);
                                 d.padding = cloudPadding.call(this, d, i);
                                 return d;
-                            }).sort(function (a, b) {
-                                    return b.size - a.size;
-                                });
+                            }).sort(function(a, b) {
+                                return b.size - a.size;
+                            });
 
                         if (timer) clearInterval(timer);
                         timer = setInterval(step, 0);
@@ -62,10 +62,13 @@ angular.module('d3')
                                     tags.push(d);
                                     event.word(d);
                                     if (bounds) cloudBounds(bounds, d);
-                                    else bounds = [
-                                        {x: d.x + d.x0, y: d.y + d.y0},
-                                        {x: d.x + d.x1, y: d.y + d.y1}
-                                    ];
+                                    else bounds = [{
+                                        x: d.x + d.x0,
+                                        y: d.y + d.y0
+                                    }, {
+                                        x: d.x + d.x1,
+                                        y: d.y + d.y1
+                                    }];
                                     // Temporary hack
                                     d.x -= size[0] >> 1;
                                     d.y -= size[1] >> 1;
@@ -78,7 +81,7 @@ angular.module('d3')
                         }
                     }
 
-                    cloud.stop = function () {
+                    cloud.stop = function() {
                         if (timer) {
                             clearInterval(timer);
                             timer = null;
@@ -86,17 +89,20 @@ angular.module('d3')
                         return cloud;
                     };
 
-                    cloud.timeInterval = function (x) {
+                    cloud.timeInterval = function(x) {
                         if (!arguments.length) return timeInterval;
                         timeInterval = x == null ? Infinity : x;
                         return cloud;
                     };
 
                     function place(board, tag, bounds) {
-                        var perimeter = [
-                                {x: 0, y: 0},
-                                {x: size[0], y: size[1]}
-                            ],
+                        var perimeter = [{
+                                x: 0,
+                                y: 0
+                            }, {
+                                x: size[0],
+                                y: size[1]
+                            }],
                             startX = tag.x,
                             startY = tag.y,
                             maxDelta = Math.sqrt(size[0] * size[0] + size[1] * size[1]),
@@ -145,61 +151,61 @@ angular.module('d3')
                         return false;
                     }
 
-                    cloud.words = function (x) {
+                    cloud.words = function(x) {
                         if (!arguments.length) return words;
                         words = x;
                         return cloud;
                     };
 
-                    cloud.size = function (x) {
+                    cloud.size = function(x) {
                         if (!arguments.length) return size;
                         size = [+x[0], +x[1]];
                         return cloud;
                     };
 
-                    cloud.font = function (x) {
+                    cloud.font = function(x) {
                         if (!arguments.length) return font;
                         font = d3.functor(x);
                         return cloud;
                     };
 
-                    cloud.fontStyle = function (x) {
+                    cloud.fontStyle = function(x) {
                         if (!arguments.length) return fontStyle;
                         fontStyle = d3.functor(x);
                         return cloud;
                     };
 
-                    cloud.fontWeight = function (x) {
+                    cloud.fontWeight = function(x) {
                         if (!arguments.length) return fontWeight;
                         fontWeight = d3.functor(x);
                         return cloud;
                     };
 
-                    cloud.rotate = function (x) {
+                    cloud.rotate = function(x) {
                         if (!arguments.length) return rotate;
                         rotate = d3.functor(x);
                         return cloud;
                     };
 
-                    cloud.text = function (x) {
+                    cloud.text = function(x) {
                         if (!arguments.length) return text;
                         text = d3.functor(x);
                         return cloud;
                     };
 
-                    cloud.spiral = function (x) {
+                    cloud.spiral = function(x) {
                         if (!arguments.length) return spiral;
                         spiral = spirals[x + ""] || x;
                         return cloud;
                     };
 
-                    cloud.fontSize = function (x) {
+                    cloud.fontSize = function(x) {
                         if (!arguments.length) return fontSize;
                         fontSize = d3.functor(x);
                         return cloud;
                     };
 
-                    cloud.padding = function (x) {
+                    cloud.padding = function(x) {
                         if (!arguments.length) return padding;
                         padding = d3.functor(x);
                         return cloud;
@@ -335,8 +341,7 @@ angular.module('d3')
                     for (var j = 0; j < h; j++) {
                         last = 0;
                         for (var i = 0; i <= w; i++) {
-                            if (((last << msx) | (i < w ? (last = sprite[j * w + i]) >>> sx : 0))
-                                & board[x + i]) return true;
+                            if (((last << msx) | (i < w ? (last = sprite[j * w + i]) >>> sx : 0)) & board[x + i]) return true;
                         }
                         x += sw;
                     }
@@ -357,8 +362,9 @@ angular.module('d3')
                 }
 
                 function archimedeanSpiral(size) {
+
                     var e = size[0] / size[1];
-                    return function (t) {
+                    return function(t) {
                         return [e * (t *= .1) * Math.cos(t), t * Math.sin(t)];
                     };
                 }
@@ -368,7 +374,7 @@ angular.module('d3')
                         dx = dy * size[0] / size[1],
                         x = 0,
                         y = 0;
-                    return function (t) {
+                    return function(t) {
                         var sign = t < 0 ? -1 : 1;
                         // See triangular numbers: T_n = n * (n + 1) / 2.
                         switch ((Math.sqrt(1 + 4 * sign * t) - sign) & 3) {
@@ -415,7 +421,6 @@ angular.module('d3')
                     var Canvas = require("canvas");
                     canvas = new Canvas(cw << 5, ch);
                 }
-
                 var c = canvas.getContext("2d"),
                     spirals = {
                         archimedean: archimedeanSpiral,
@@ -431,4 +436,4 @@ angular.module('d3')
         };
 
         $provide.decorator('d3', d3WorldCloudDecorator);
-  }]);
+    }]);

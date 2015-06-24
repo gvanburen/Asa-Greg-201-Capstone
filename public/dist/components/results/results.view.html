@@ -1,0 +1,81 @@
+<nav class="grey darken-3" role="navigation">
+    <div class="nav-wrapper container">
+        <a href="#/" class="brand-logo left">Twitter Analyzer</a>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col s12 center">
+            <div ng-if="words">
+                <results-cloud words=words></results-cloud>
+            </div>
+            <ul class="collapsible center-align" data-collapsible="accordion" ng-click="collapse()">
+                <li id="hash" ng-hide="hashtags.length == 0">
+                    <div class="collapsible-header grey lighten-4">
+                        Hashtags
+                        <div ng-show=loadingHashtags class="progress resultsBar">
+                            <div class="indeterminate"></div>
+                        </div>
+                    </div>
+                    <div class="collapsible-body">
+                        <ul class="col s10 offset-s1 bold">Your recommended hashtag include:
+                            <li class="light" ng-repeat="hashtag in hashtags">{{hashtag}}</li>
+                        </ul>
+                    </div>
+                </li>
+                <li id="cat" ng-hide="categories.length == 0">
+                    <div class="collapsible-header grey lighten-4">
+                        Classes
+                        <div ng-show=loadingClasses class="progress resultsBar">
+                            <div class="indeterminate"></div>
+                        </div>
+                    </div>
+                    <div class="collapsible-body">
+                        <ul class="col s10 offset-s1 bold">Your tweet falls into the follow category:
+                            <li class="light" ng-repeat="category in categories">{{category.label}}</li>
+                        </ul>
+                    </div>
+                </li>
+                <li id="ent" ng-hide="entities.length == 0">
+                    <div class="collapsible-header grey lighten-4">
+                        Entities
+                        <div ng-show=loadingEntities class="progress resultsBar">
+                            <div class="indeterminate"></div>
+                        </div>
+                    </div>
+                    <div class="collapsible-body">
+                        <ul class="col s10 offset-s1 bold">Keywords that appear in the tweet:
+                            <li class="light" ng-repeat="words in entities.keyword">{{words}}</li>
+                        </ul>
+                    </div>
+                </li>
+                <li id="sent" ng-hide="sentiment.length == 0">
+                    <div class="collapsible-header grey lighten-4">
+                        Sentiment Data
+                        <div ng-show=loadingSentiment class="progress resultsBar">
+                            <div class="indeterminate"></div>
+                        </div>
+                    </div>
+                    <div class="collapsible-body">
+                        <ul class="col s10 offset-s1 bold">Attitude of the tweet:
+                            <li class="light">{{sentiment.polarity}}</li>
+                        </ul>
+                    </div>
+                </li>
+                <li id="cont" ng-hide="concepts == null">
+                    <div class="collapsible-header grey lighten-4">
+                        Concepts
+                        <div ng-show=loadingConcepts class="progress resultsBar">
+                            <div class="indeterminate"></div>
+                        </div>
+                    </div>
+                    <div class="collapsible-body">
+                        <ul class="col s10 offset-s1 bold">Find linked entities:
+                            <li class="light" ng-repeat="(key, val) in concepts"><a ng-href="{{key}}">{{key}}</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
