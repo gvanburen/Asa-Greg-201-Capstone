@@ -7,6 +7,9 @@
     }
 }
 
+.amber {
+    background-color: #FFB800;
+}
 #index-banner {
     background-image: url('../images/Twitter-flat-analytics.png');
     background-size: cover;
@@ -34,21 +37,21 @@ h2 {
 }
 
 .sentiment-icon {
-    background-image: url('../images/sentiment.png');
+    background-image: url('../images/face.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
 }
 
 .classify-icon {
-    background-image: url('../images/bird_reading_edit.png');
+    background-image: url('../images/container.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
 }
 
 .hashtag-icon {
-    background-image: url('../images/hashtag.png');
+    background-image: url('../images/hashtag.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain; 
