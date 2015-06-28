@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('textAnalysis')
-  .directive('resultsCloud', ['d3','$window',function (d3,$window) {
+  .directive('resultsCloud', ['d3','$window', function (d3,$window) {
     return {
       restrict: 'E',
         scope:{

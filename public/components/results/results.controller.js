@@ -9,7 +9,7 @@ angular.module('textAnalysis')
                     accordian: true
                 });
             };
-            
+
             $scope.loadingSentiment = true;
             $scope.loadingHashtags = true;
             $scope.loadingEntities = true;
@@ -17,7 +17,7 @@ angular.module('textAnalysis')
             $scope.loadingConcepts = true;
 
             var init = function() {
-                $scope.words = function(){
+                $scope.words = function() {
                     var tweet = twitterService.resultsTweet.match(/\S+/g);
                     storageService.setData('tweet', twitterService.resultsTweet);
                     return tweet;
@@ -90,8 +90,8 @@ angular.module('textAnalysis')
                     });
             };
 
-            var refreshed = function(){
-                $scope.words = function(){
+            var refreshed = function() {
+                $scope.words = function() {
                     var tweet = twitterService.resultsTweet.match(/\S+/g);
                     return tweet;
                 }();
@@ -107,20 +107,11 @@ angular.module('textAnalysis')
                 $scope.loadingConcepts = false;
             };
 
-            if (twitterService.resultsTweet == ""){
+            if (twitterService.resultsTweet == "") {
                 twitterService.resultsTweet = storageService.getData('tweet');
                 refreshed();
             } else {
                 init();
             }
-            //check this logic
-
-            // if (twitterService.resultsTweet.length) {
-            //     init();
-            // } else {
-            //     twitterService.getSingleTweet($routeParams.id).then(function() {
-            //         init();
-            //     });
-            // }
-        
-    }]);
+        }
+    ]);

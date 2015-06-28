@@ -1,5 +1,6 @@
 var controller = require('./controllers/tweet.controller');
 var aylienController = require('./controllers/aylien.controller.js');
+var path = require('path');
 
 //require in controllers for 3rd party apis to
 // expose functions that make requests to those endpoints.
@@ -15,8 +16,6 @@ module.exports = function(app) {
     app.get('/api/tweets/concepts/:text', aylienController.getConcepts);
 
     app.get('*', function(req, res) {
-        res.sendFile('/public/index.html');
+        res.sendFile('index.html', { root: path.join(__dirname, '../public') });
     });
 };
-
-

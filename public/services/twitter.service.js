@@ -19,13 +19,17 @@ angular.module('textAnalysis')
                 store response in userTimeline array. */
 
                 loadTweets: function(handleInput, timelineInput) {
+
                     twitterObj.checkCache(handleInput, timelineInput);
                     var deferred = $q.defer();
+
                     if (twitterObj.userTimeline[handleInput + '-' + timelineInput].length > 0) {
                         deferred.resolve(twitterObj.userTimeline[handleInput + '-' + timelineInput]);
                     } else {
-                            $http.get('/api/' + handleInput, {
-                                params: { timeline: timelineInput }
+                        $http.get('/api/' + handleInput, {
+                                params: {
+                                    timeline: timelineInput
+                                }
                             })
                             .success(function(data) {
                                 deferred.resolve(data);
