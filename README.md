@@ -1,5 +1,5 @@
 # Tweet Analyzer
-Pair project for Thinkful with contributions from both Asa and Greg.
+Pair project with [Asa](https://github.com/asatoburen) for Thinkful.
 
 ### Purpose
 Application will analyze your or another user's tweets. 
